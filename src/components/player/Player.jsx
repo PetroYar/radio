@@ -50,7 +50,7 @@ const Player = (props) => {
             src={radioStations[stationIndex].url}
             ref={audioRef}
             className="player__audio"
-            onEnded={nextStation}
+            
           ></audio>
           <div className="player__nav ">
             <button

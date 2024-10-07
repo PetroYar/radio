@@ -1,41 +1,41 @@
-@import '../../App.scss';
+@import "../../App.scss";
 .player {
-display: flex;flex-direction: column;
-justify-content: center;
-gap: toRem(10);
-&__station-name{
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: toRem(10);
+  &__station-name {
+    text-align: center;
+  }
+  &__nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button-prev {
+  }
+
+  &__volume-slider {
+  }
+
+  &__button-next {
+  }
+
+  &__toggle {
+  }
 }
-		&__nav {
-      display: flex;
-      justify-content: center;
-      
-		}
-
-		&__button-prev {
-		}
-
-		&__volume-slider {
-		}
-
-		&__button-next {
-		}
-
-		&__toggle {
-		}
-}
-img{
+img {
   width: toRem(100);
   margin: 0 auto;
 }
 
-audio {
-  display: none;
-}
+// audio {
+//   display: none;
+// }
 input[type="range"] {
   -webkit-appearance: none; /* Скидання стандартного стилю для WebKit */
   width: 10%; /* Ширина повзунка */
-  height: 8px; /* Висота повзунка */
+  height: 3px; /* Висота повзунка */
   border-radius: 5px; /* Заокруглення країв */
   background: #db1717; /* Колір фону */
   outline: none; /* Скидання рамки при фокусі */
@@ -44,8 +44,8 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; /* Скидання стандартного стилю для WebKit */
   appearance: none; /* Скидання стандартного стилю для інших браузерів */
-  width: 20px; /* Ширина "вушка" */
-  height: 20px; /* Висота "вушка" */
+  width: 10px; /* Ширина "вушка" */
+  height: 10px; /* Висота "вушка" */
   border-radius: 50%; /* Заокруглення */
   background: #8ecb90; /* Колір "вушка" */
   cursor: pointer; /* Курсор при наведенні */

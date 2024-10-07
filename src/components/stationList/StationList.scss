@@ -1,5 +1,10 @@
 .station-list {
+  display: flex;
+  flex-direction: column;
   &__item {
+    display: flex;
+    justify-content: space-between;
+    transition: color 0.7s;
     &--active {
       color: red;
     }
