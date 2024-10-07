@@ -1,0 +1,10 @@
+.station-list {
+  &__item {
+    &--active {
+      color: red;
+    }
+  }
+
+  &__item-like-button {
+  }
+}

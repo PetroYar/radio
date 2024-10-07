@@ -5,8 +5,8 @@ import { useRadio } from "../hooks/useRadio";
 
 const Player = (props) => {
   const audioRef = useRef();
-  const { radioStations } = useRadio();
-  const [currentStationIndex, setCurrentStationIndex] = useState(0);
+  const { radioStations, stationIndex, setStationIndex } = useRadio();
+
   const [isPlaying, setIsPlaying] = useState(true);
 
   const togglePlay = () => {
@@ -19,18 +19,18 @@ const Player = (props) => {
   };
 
   const nextStation = () => {
-    if (currentStationIndex < radioStations.length - 1) {
-      setCurrentStationIndex((current) => current + 1);
+    if (stationIndex < radioStations.length - 1) {
+      setStationIndex((current) => current + 1);
     } else {
-      setCurrentStationIndex(0);
+      setStationIndex(0);
     }
   };
 
   const prevStation = () => {
-    if (currentStationIndex > 0) {
-      setCurrentStationIndex((current) => current - 1);
+    if (stationIndex > 0) {
+      setStationIndex((current) => current - 1);
     } else {
-      setCurrentStationIndex(radioStations.length - 1);
+      setStationIndex(radioStations.length - 1);
     }
   };
 
@@ -38,10 +38,16 @@ const Player = (props) => {
     <div className="player">
       {radioStations && radioStations.length > 0 ? (
         <>
-          <p className="player__station-name">{radioStations[currentStationIndex].name}</p>
+          {radioStations[stationIndex].url && (
+            <img src={radioStations[stationIndex].favicon} alt="" />
+          )}
+
+          <p className="player__station-name">
+            {radioStations[stationIndex].name}
+          </p>
           <audio
-            autoPlay={currentStationIndex > 0}
-            src={radioStations[currentStationIndex].url}
+            autoPlay={stationIndex > 0}
+            src={radioStations[stationIndex].url}
             ref={audioRef}
             className="player__audio"
             onEnded={nextStation}

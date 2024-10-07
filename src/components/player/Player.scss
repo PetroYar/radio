@@ -24,7 +24,10 @@ gap: toRem(10);
 		&__toggle {
 		}
 }
-
+img{
+  width: toRem(100);
+  margin: 0 auto;
+}
 
 audio {
   display: none;
