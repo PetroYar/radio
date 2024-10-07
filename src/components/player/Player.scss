@@ -1,0 +1,58 @@
+@import '../../App.scss';
+.player {
+display: flex;flex-direction: column;
+justify-content: center;
+gap: toRem(10);
+&__station-name{
+  text-align: center;
+}
+		&__nav {
+      display: flex;
+      justify-content: center;
+      
+		}
+
+		&__button-prev {
+		}
+
+		&__volume-slider {
+		}
+
+		&__button-next {
+		}
+
+		&__toggle {
+		}
+}
+
+
+audio {
+  display: none;
+}
+input[type="range"] {
+  -webkit-appearance: none; /* Скидання стандартного стилю для WebKit */
+  width: 10%; /* Ширина повзунка */
+  height: 8px; /* Висота повзунка */
+  border-radius: 5px; /* Заокруглення країв */
+  background: #db1717; /* Колір фону */
+  outline: none; /* Скидання рамки при фокусі */
+  margin: 10px; /* Відступи */
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Скидання стандартного стилю для WebKit */
+  appearance: none; /* Скидання стандартного стилю для інших браузерів */
+  width: 20px; /* Ширина "вушка" */
+  height: 20px; /* Висота "вушка" */
+  border-radius: 50%; /* Заокруглення */
+  background: #8ecb90; /* Колір "вушка" */
+  cursor: pointer; /* Курсор при наведенні */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Тінь для "вушка" */
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #c92929; /* Колір фону треку */
+  border-radius: 5px; /* Заокруглення країв треку */
+}
+input[type="range"]::-moz-range-track {
+  background: #0722eb; /* Колір фону треку */
+  border-radius: 5px; /* Заокруглення країв треку */
+}

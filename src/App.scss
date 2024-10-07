@@ -1,0 +1,9 @@
+@import "./assets/scss/null.scss";
+@import "./assets/scss/variable.scss";
+@import "./assets/scss/mixin.scss";
+
+body{
+  padding: 200px;
+  background: rgb(13,149,144);
+background: radial-gradient(circle, rgba(13,149,144,1) 0%, rgba(34,180,174,1) 100%);
+}
