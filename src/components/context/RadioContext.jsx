@@ -13,24 +13,30 @@ const RadioProvider = ({ children }) => {
         const data = await fetchRadioStations();
 
         const uaStation = data.filter((el) =>
-          el.name.toLowerCase().includes("ukraine")
+          el.country.toLowerCase().includes("ukraine") && el.name.toLowerCase().includes('1')
         );
-        setRadioStations(uaStation);
+        // const testt = data.filter(el=>el.votes > 300)
+        // console.log(testt.length)
+      
+        const test = uaStation.filter((el) => {
+          return el.votes > 450;
+        });
+        console.log(test)
+        setRadioStations(test);
       } catch (error) {
         console.log(`error`, error);
       }
     };
     getStation();
   }, []);
-  console.log(stationToFavorites)
- 
-  console.log(radioStations);
+  
+
   const valueCTX = {
     radioStations,
     stationIndex,
     setStationIndex,
     setStationToFavorites,
-    stationToFavorites
+    stationToFavorites,
   };
   return (
     <RadioContext.Provider value={valueCTX}>{children}</RadioContext.Provider>
