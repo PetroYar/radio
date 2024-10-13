@@ -19,6 +19,7 @@ const RadioProvider = ({ children }) => {
      try {
        const stations = await api.searchStations({
          countryCode: "ua",
+         limit:5
        });
 
        console.log(stations);
