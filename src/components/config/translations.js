@@ -3,7 +3,7 @@ import favourite from "../icon/favourite.svg";
 import instagram from "../icon/instagram.svg";
 import home from "../icon/home.svg";
 import history from "../icon/history.svg";
-import login from "../icon/login.svg";
+import loggin from "../icon/login.svg";
 import setting from "../icon/seting.svg";
 
 export const translationsAside = {
@@ -25,7 +25,7 @@ export const translationsAside = {
     ],
     general: [
       { name: "setting", icon: setting },
-      { name: "log in", icon: login },
+      { name: "log in", icon: loggin },
     ],
   },
   ua: {
@@ -46,7 +46,7 @@ export const translationsAside = {
     ],
     general: [
       { name: "налаштування", icon: setting },
-      { name: "увійти", icon: login },
+      { name: "увійти", icon: loggin },
     ],
   },
   pl: {
@@ -67,7 +67,7 @@ export const translationsAside = {
     ],
     general: [
       { name: "ustawienia", icon: setting },
-      { name: "zaloguj się", icon: login },
+      { name: "zaloguj się", icon: loggin },
     ],
   },
 };
