@@ -1,10 +1,10 @@
-import facebook from "../../assets/icon/facebook.svg";
-import favourite from "../../assets/icon/favourite.svg";
-import instagram from "../../assets/icon/instagram.svg";
-import home from "../../assets/icon/home.svg";
-import history from '../../assets/icon/history.svg'
-import login from "../../assets/icon/login.svg";
-import setting from "../../assets/icon/seting.svg";
+import facebook from "../icon/facebook.svg";
+import favourite from "../icon/favourite.svg";
+import instagram from "../icon/instagram.svg";
+import home from "../icon/home.svg";
+import history from "../icon/history.svg";
+import login from "../icon/login.svg";
+import setting from "../icon/seting.svg";
 
 export const translationsAside = {
   en: {
@@ -14,10 +14,7 @@ export const translationsAside = {
       share: "Share",
       general: "General",
     },
-    menu: [
-      { name: "home", icon: home },
-     
-    ],
+    menu: [{ name: "home", icon: home }],
     history: [
       { name: "recent", icon: history },
       { name: "favorite", icon: favourite },
@@ -38,10 +35,7 @@ export const translationsAside = {
       share: "Поділитися",
       general: "Загальні",
     },
-    menu: [
-      { name: "головна", icon: home },
-      
-    ],
+    menu: [{ name: "головна", icon: home }],
     history: [
       { name: "нещодавні", icon: history },
       { name: "вибрані", icon: favourite },
@@ -62,10 +56,7 @@ export const translationsAside = {
       share: "Udostępnij",
       general: "Ogólne",
     },
-    menu: [
-      { name: "strona główna", icon: home },
-      
-    ],
+    menu: [{ name: "strona główna", icon: home }],
     history: [
       { name: "niedawne", icon: history },
       { name: "ulubione", icon: favourite },

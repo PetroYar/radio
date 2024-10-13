@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="app">
       <RadioProvider>
-        {/* <Aside /> */}
+        <Aside />
         <div className="content">
           <Header />
           <main className="main">

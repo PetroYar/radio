@@ -2,8 +2,8 @@ import React from "react";
 
 import "./Header.scss";
 import { useRadio } from "../hooks/useRadio";
-import globe from "../../assets/icon/Globe.svg";
-import search from "../../assets/icon/search.svg";
+import globe from "../icon/Globe.svg";
+import search from "../icon/search.svg";
 
 const Header = (props) => {
   const { language, setLanguage } = useRadio(); // Початкова мова — англійська

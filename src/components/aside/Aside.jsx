@@ -1,7 +1,7 @@
 import React from "react";
 import { translationsAside } from "../config/translations";
 import "./Aside.scss";
-import logo from '../../assets/icon/logo.svg'
+import logo from '../icon/logo.svg'
 import { useRadio } from "../hooks/useRadio";
 const Aside = (props) => {
   const {language} = useRadio()
