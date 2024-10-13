@@ -18,24 +18,25 @@
 //   }
 // };
 
-// Виклик функції для отримання станцій
 
 
-// const RADIO_API_URL = "https://de1.api.radio-browser.info/json/stations";
 
-// export const fetchRadioStations = async () => {
-//   try {
-//     const response = await fetch(RADIO_API_URL);
-//     if (!response.ok) {
-//       throw new Error(`Error status ${response.status}`);
-//     }
-//     const stationsData = await response.json();
-//     return stationsData;
-//   } catch (error) {
-//     console.error("Error:", error);
-//     throw error;
-//   }
-// };
+export const RADIO_API_URL = "https://de1.api.radio-browser.info/json/stations";
+
+export const fetchRadioStations = async (limit) => {
+  try {
+      const url = limit ? `${RADIO_API_URL}?limit=${limit}` : RADIO_API_URL;
+      const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error status ${response.status}`);
+    }
+    const stationsData = await response.json();
+    return stationsData;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+};
 export const fetchStations = async () => {
   try {
     const params = new URLSearchParams({
