@@ -1,6 +1,8 @@
 .station-list {
   display: flex;
   flex-direction: column;
+  max-height: 450px;
+  overflow: auto;
   &__item {
     display: flex;
     justify-content: space-between;
