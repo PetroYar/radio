@@ -11,24 +11,22 @@ const RadioProvider = ({ children }) => {
   const [stationIndex, setStationIndex] = useState(0);
   const [stationToFavorites, setStationToFavorites] = useState([]);
   const [language, setLanguage] = useState("en");
-  useEffect(() => {
-    const fetchStations = async () => {
-      try {
-        const stations = await api.searchStations({
-          
-          countryCode: 'ua',
-          
-        });
+ useEffect(() => {
+   const fetchStations = async () => {
+     try {
+       const stations = await api.searchStations({
+         countryCode: "ua",
+       });
+       setRadioStations(stations);
+       console.log(stations);
+     } catch (error) {
+       console.error("Error fetching stations:", error.message);
+     }
+   };
 
-        setRadioStations(stations); 
-        console.log(stations);
-      } catch (error) {
-        console.error("Error fetching stations:", error);
-      }
-    };
+   fetchStations();
+ }, []);
 
-    fetchStations(); // Виклик функції тут, поза try...catch
-  }, []); 
   const valueCTX = {
     radioStations,
     stationIndex,
