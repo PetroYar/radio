@@ -13,15 +13,14 @@ const StationList = (props) => {
   const selectStationByIndex = (index) => {
     setStationIndex(index);
   };
-const addStationToFavorites = (station) => {
-  setStationToFavorites((favorites) => {
-  
-    if (!favorites.some((fav) => fav.changeuuid === station.changeuuid)) {
-      return [...favorites, station];
-    }
-    return favorites; 
-  });
-};
+  const addStationToFavorites = (station) => {
+    setStationToFavorites((favorites) => {
+      if (!favorites.some((fav) => fav.changeuuid === station.changeuuid)) {
+        return [...favorites, station];
+      }
+      return favorites;
+    });
+  };
 
   return (
     <ul className="station-list ">
@@ -38,11 +37,14 @@ const addStationToFavorites = (station) => {
                 onClick={() => selectStationByIndex(ind)}
                 className="station-list__item-button"
               >
-                {el.name}
+                {el.name
+                  .replace(
+                    / - \d+kb\/s|\s+\d+(\.\d+)?FM|\s+\(\d+\s+kбіт\/с\)|\s+\d+\.\d+/g,
+                    ""
+                  )
+                  .trim()}
               </button>
-              <button onClick={() => addStationToFavorites(el)}>
-                Like
-              </button>
+              <button onClick={() => addStationToFavorites(el)}>Like</button>
             </li>
           );
         })

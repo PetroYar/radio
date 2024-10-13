@@ -1,7 +1,7 @@
 @import "../../App.scss";
 .player {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: toRem(10);
   &__station-name {
@@ -23,10 +23,10 @@
 
   &__toggle {
   }
-}
-img {
-  width: toRem(100);
-  margin: 0 auto;
+  img {
+    width: toRem(100);
+    margin: 0 auto;
+  }
 }
 
 // audio {

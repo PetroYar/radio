@@ -1,5 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import { fetchRadioStations } from "../utils/api";
+
+import { RadioBrowserApi } from "radio-browser-api";
+
+const api = new RadioBrowserApi("My Radio App");
 
 const RadioContext = createContext();
 
@@ -7,36 +10,33 @@ const RadioProvider = ({ children }) => {
   const [radioStations, setRadioStations] = useState([]);
   const [stationIndex, setStationIndex] = useState(0);
   const [stationToFavorites, setStationToFavorites] = useState([]);
+  const [language, setLanguage] = useState("en");
   useEffect(() => {
-    const getStation = async () => {
+    const fetchStations = async () => {
       try {
-        const data = await fetchRadioStations();
-
-        const uaStation = data.filter((el) =>
-          el.country.toLowerCase().includes("ukraine") && el.name.toLowerCase().includes('1')
-        );
-        // const testt = data.filter(el=>el.votes > 300)
-        // console.log(testt.length)
-      
-        const test = uaStation.filter((el) => {
-          return el.votes > 450;
+        const stations = await api.searchStations({
+          
+          countryCode: language,
+          
         });
-        console.log(test)
-        setRadioStations(test);
+
+        setRadioStations(stations); // Зберігаємо отримані станції в state
+        console.log(stations);
       } catch (error) {
-        console.log(`error`, error);
+        console.error("Error fetching stations:", error);
       }
     };
-    getStation();
-  }, []);
-  
 
+    fetchStations(); // Виклик функції тут, поза try...catch
+  }, [language]); 
   const valueCTX = {
     radioStations,
     stationIndex,
     setStationIndex,
     setStationToFavorites,
     stationToFavorites,
+    language,
+    setLanguage,
   };
   return (
     <RadioContext.Provider value={valueCTX}>{children}</RadioContext.Provider>

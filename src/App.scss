@@ -3,11 +3,17 @@
 @import "./assets/scss/mixin.scss";
 
 body{
+  color: $balck;
   padding: 200px;
   background: rgb(13,149,144);
 background: radial-gradient(circle, rgba(13,149,144,1) 0%, rgba(34,180,174,1) 100%);
 }
-.test{
+.app {
   display: flex;
-  justify-content: space-between;
+}
+.content {
+  width: 100%;
+}
+.main {
+ 
 }

@@ -1,0 +1,27 @@
+@import '../../App.scss';
+
+.aside {
+background: $bg-color;
+text-transform: capitalize;
+padding: toRem(10);
+		&__title {
+      color: $orange;
+			margin-bottom: toRem(5);
+		}
+
+		&__list {
+			display: flex;
+			flex-direction: column;
+			gap: toRem(5);
+			margin-bottom: toRem(5);
+		}
+
+		&__item {
+			display: flex;
+			align-items: center;
+			
+			img{
+				width: toRem(40);
+			}
+		}
+}

@@ -5,7 +5,8 @@ import { useRadio } from "../hooks/useRadio";
 
 const Player = (props) => {
   const audioRef = useRef();
-  const { radioStations, stationIndex, setStationIndex } = useRadio();
+  const { stationToFavorites, radioStations, stationIndex, setStationIndex } =
+    useRadio();
 
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -42,16 +43,15 @@ const Player = (props) => {
             <img src={radioStations[stationIndex].favicon} alt="" />
           )}
 
-          <p className="player__station-name">
-            {radioStations[stationIndex].name}
-          </p>
           <audio
             autoPlay={stationIndex > 0}
             src={radioStations[stationIndex].url}
             ref={audioRef}
             className="player__audio"
-            
           ></audio>
+          <button onClick={togglePlay} className="player__toggle">
+            {isPlaying ? "плей" : "пауза"}
+          </button>
           <div className="player__nav ">
             <button
               onClick={prevStation}
@@ -60,7 +60,6 @@ const Player = (props) => {
             >
               назад
             </button>
-            <input type="range" className="player__volume-slider" />
             <button
               onClick={nextStation}
               className="player__button-next"
@@ -69,10 +68,15 @@ const Player = (props) => {
               вперед
             </button>
           </div>
-
-          <button onClick={togglePlay} className="player__toggle">
-            {isPlaying ? "плей" : "пауза"}
-          </button>
+          <p className="player__station-name">
+            {radioStations[stationIndex].name
+              .replace(
+                / - \d+kb\/s|\s+\d+(\.\d+)?FM|\s+\(\d+\s+kбіт\/с\)|\s+\d+\.\d+/g,
+                ""
+              )
+              .trim()}
+          </p>
+          <input type="range" className="player__volume-slider" />
         </>
       ) : (
         <p>Loading stations...</p> // Повідомлення, якщо станції ще не завантажилися
