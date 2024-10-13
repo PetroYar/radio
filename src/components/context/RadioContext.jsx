@@ -32,7 +32,12 @@ const RadioProvider = ({ children }) => {
 
    fetchStations();
  }, []);
-
+useEffect(() => {
+  fetch("https://de1.api.radio-browser.info/json/stations")
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Fetch error:", error));
+}, []);
   const valueCTX = {
     radioStations,
     stationIndex,
