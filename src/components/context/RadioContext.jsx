@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 import { RadioBrowserApi } from "radio-browser-api";
 
-const api = new RadioBrowserApi("My Radio App");
+const api = new RadioBrowserApi("My Radio App", true);
 
 const RadioContext = createContext();
 
@@ -11,21 +11,23 @@ const RadioProvider = ({ children }) => {
   const [stationIndex, setStationIndex] = useState(0);
   const [stationToFavorites, setStationToFavorites] = useState([]);
   const [language, setLanguage] = useState("en");
- useEffect(() => {
-   const fetchStations = async () => {
-     try {
-       const stations = await api.searchStations({
-         countryCode: "ua",
-       });
-       setRadioStations(stations);
-       console.log(stations);
-     } catch (error) {
-       console.error("Error fetching stations:", error.message);
-     }
-   };
 
-   fetchStations();
- }, []);
+  useEffect(() => {
+    const fetchStations = async () => {
+      try {
+        const stations = await api.searchStations({
+          countryCode: "ua",
+        });
+
+        console.log(stations);
+        return stations;
+      } catch (error) {
+        console.error("Error fetching stations:", error);
+      }
+    };
+
+    fetchStations();
+  }, []);
 
   const valueCTX = {
     radioStations,
