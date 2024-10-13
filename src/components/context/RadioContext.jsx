@@ -23,7 +23,8 @@ const RadioProvider = ({ children }) => {
        });
 
        console.log(stations);
-       return stations;
+       setRadioStations(stations)
+      
      } catch (error) {
        console.error("Error fetching stations:", error);
      }
