@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 import { RadioBrowserApi } from "radio-browser-api";
 
-const api = new RadioBrowserApi("My Radio App", true);
+const api = new RadioBrowserApi("My Radio App");
 
 const RadioContext = createContext();
 
