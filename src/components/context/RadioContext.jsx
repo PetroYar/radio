@@ -20,7 +20,7 @@ const RadioProvider = ({ children }) => {
           
         });
 
-        setRadioStations(stations); // Зберігаємо отримані станції в state
+        setRadioStations(stations); 
         console.log(stations);
       } catch (error) {
         console.error("Error fetching stations:", error);
@@ -28,7 +28,7 @@ const RadioProvider = ({ children }) => {
     };
 
     fetchStations(); // Виклик функції тут, поза try...catch
-  }, [language]); 
+  }, []); 
   const valueCTX = {
     radioStations,
     stationIndex,
