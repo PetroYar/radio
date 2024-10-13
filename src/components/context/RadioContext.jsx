@@ -3,8 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import { RadioBrowserApi, StationSearchType } from "radio-browser-api";
 
 const api = new RadioBrowserApi(
-  "My Radio App",
-  "https://de1.api.radio-browser.info"
+  "My Radio App"
 );
 
 const RadioContext = createContext();
