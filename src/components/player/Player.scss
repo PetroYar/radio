@@ -6,27 +6,30 @@
   gap: toRem(10);
   background: $bg-color;
   border: 1px solid rgba(211, 215, 223, 1);
-  padding: toRem(20) toRem(30) toRem(20) toRem(10);
+  padding: toRem(0) toRem(30) toRem(0) toRem(10);
   &__station-name {
     text-align: center;
     width: 140px;
-     white-space: nowrap;          /* Не переносити текст на новий рядок */
-  overflow: hidden;             /* Сховати переповнений текст */
-  text-overflow: ellipsis;
-
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    color: $orange;
   }
-  &__nav {
-    display: flex;
-    justify-content: center;
-  }
-
+&.time{
+  
+  text-align: center;
+}
   &__button-prev {
+    transition: opacity 0.6s;
+    &:hover {
+      opacity: 0.6;
+    }
   }
   &__range-slider {
-   display: flex;
-   align-items: center;
-   gap: toRem(10);
-   width: toRem(150);
+    display: flex;
+    align-items: center;
+    gap: toRem(10);
+    width: toRem(150);
     input {
       -webkit-appearance: none;
       width: 100%;
@@ -62,10 +65,42 @@
   }
 
   &__button-next {
+    transition: opacity 0.6s;
+    &:hover {
+      opacity: 0.6;
+    }
   }
+  &__play {
+    transition: all 0.7s;
 
-  img {
-    width: toRem(24);
-    margin: 0 auto;
+    &:hover {
+      opacity: 0.6;
+    }
   }
+  &__stop {
+    transition: opacity 0.6s;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  &__random {
+    transition: opacity 0.6s;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  // img {
+  //   width: toRem(24);
+  //   margin: 0 auto;
+  // }
+  .playing {
+    filter: brightness(0) invert(0.7);
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &__img{
+  width: 70px;
+  height: 70px;
+}
 }
