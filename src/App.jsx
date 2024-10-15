@@ -14,7 +14,7 @@ function App() {
   const { radioStations } = useRadio();
   return (
     <>
-      {radioStations && radioStations.length > 0 ? (
+      {/* {radioStations && radioStations.length > 0 ? ( */}
         <div className="app">
           <Aside />
           <div className="content">
@@ -31,9 +31,9 @@ function App() {
             <Player />
           </div>
         </div>
-      ) : (
+      {/* ) : (
         <p>ds</p>
-      )}
+      )} */}
     </>
   );
 }
