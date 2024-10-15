@@ -11,7 +11,7 @@ import AudioVisualizer from "./components/audioVisualizer/AudioVisualizer";
 import { useRadio } from "./components/hooks/useRadio";
 
 function App() {
-  const { radioStations } = useRadio();
+  const { audioRef } = useRadio();
   return (
     <>
       {/* {radioStations && radioStations.length > 0 ? ( */}
@@ -23,7 +23,7 @@ function App() {
               <div className="test">
                 <StationList />
 
-                <AudioVisualizer />
+                <AudioVisualizer/>
               </div>
               <FilterPanel />
               {/* <FavoriteStations /> */}

@@ -1,7 +1,7 @@
 
 
 export const RADIO_API_URL =
-  "https://at1.api.radio-browser.info/json/stations/bylanguage/ukrainian?limit=5000";
+  "https://at1.api.radio-browser.info/json/stations/bytag/reggae?limit=5000";
 
 export const fetchRadioStations = async () => {
   try {

@@ -12,8 +12,7 @@ import radioIcon from "../icon/radioIcon.png";
 
 
 const Player = (props) => {
-  const audioRef = useRef();
-  const {  radioStations, stationIndex, setStationIndex } =
+  const { audioRef, radioStations, stationIndex, setStationIndex } =
     useRadio();
   const [currentTime, setCurrentTime] = useState(0);
 const [playbackStatus,setPlaybackStatus] = useState(false)
@@ -28,7 +27,7 @@ const [playbackStatus,setPlaybackStatus] = useState(false)
       setStationIndex(0);
     }
   };
-  
+
   const prevStation = () => {
     if (stationIndex > 0) {
       setStationIndex((current) => current - 1);
@@ -64,7 +63,7 @@ const [playbackStatus,setPlaybackStatus] = useState(false)
           <button
             onClick={prevStation}
             className="player__button-prev"
-            aria-label="Перейти до попередньої станції"
+          
           >
             <img src={prev} alt="prev arrow" />
           </button>

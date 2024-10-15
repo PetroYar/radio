@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState , useRef} from "react";
 
 import { fetchRadioStations } from "../utils/api";
 
@@ -9,6 +9,7 @@ const RadioProvider = ({ children }) => {
   const [stationIndex, setStationIndex] = useState(0);
   const [stationToFavorites, setStationToFavorites] = useState([]);
   const [language, setLanguage] = useState("en");
+  const audioRef = useRef();
 
   useEffect(() => {
     const fetchStations = async () => {
@@ -35,6 +36,7 @@ const RadioProvider = ({ children }) => {
     stationToFavorites,
     language,
     setLanguage,
+    audioRef
   };
   return (
     <RadioContext.Provider value={valueCTX}>{children}</RadioContext.Provider>
