@@ -1,0 +1,11 @@
+@import '../../App.scss';
+
+.filter-panel{
+
+padding: toRem(10);
+ background: url(../icon/bg.png)0 0/100% 100% no-repeat;
+
+  border: 1px solid rgba(211, 215, 223, 1);
+width: 20%;
+max-width: 250px;
+}

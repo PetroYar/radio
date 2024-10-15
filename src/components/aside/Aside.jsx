@@ -10,6 +10,7 @@ const Aside = (props) => {
 
   return (
     <aside className="aside">
+      <div className="aside__container">
       <div className="logo">
         <img src={logo} alt="logo world radio" />
       </div>
@@ -35,6 +36,8 @@ const Aside = (props) => {
           </ul>
         </div>
       ))}
+
+      </div>
     </aside>
   );
 };

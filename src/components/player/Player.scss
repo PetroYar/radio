@@ -2,10 +2,18 @@
 .player {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: toRem(10);
+  background: $bg-color;
+  border: 1px solid rgba(211, 215, 223, 1);
+  padding: toRem(20) toRem(30) toRem(20) toRem(10);
   &__station-name {
     text-align: center;
+    width: 140px;
+     white-space: nowrap;          /* Не переносити текст на новий рядок */
+  overflow: hidden;             /* Сховати переповнений текст */
+  text-overflow: ellipsis;
+
   }
   &__nav {
     display: flex;
@@ -14,48 +22,50 @@
 
   &__button-prev {
   }
-
+  &__range-slider {
+   display: flex;
+   align-items: center;
+   gap: toRem(10);
+   width: toRem(150);
+    input {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 2px;
+      background: $balck;
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background: black;
+        width: toRem(10);
+        height: toRem(10);
+        border-radius: 50%;
+      }
+    }
+  }
   &__volume-slider {
+    display: flex;
+    width: toRem(150);
+    align-items: center;
+    input {
+      -webkit-appearance: none;
+      width: 100%;
+      transform: translateX(-2px);
+      height: 2px;
+      background: $balck;
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background: black;
+        width: toRem(10);
+        height: toRem(10);
+        border-radius: 50%;
+      }
+    }
   }
 
   &__button-next {
   }
 
-  &__toggle {
-  }
   img {
-    width: toRem(100);
+    width: toRem(24);
     margin: 0 auto;
   }
-}
-
-// audio {
-//   display: none;
-// }
-input[type="range"] {
-  -webkit-appearance: none; /* Скидання стандартного стилю для WebKit */
-  width: 10%; /* Ширина повзунка */
-  height: 3px; /* Висота повзунка */
-  border-radius: 5px; /* Заокруглення країв */
-  background: #db1717; /* Колір фону */
-  outline: none; /* Скидання рамки при фокусі */
-  margin: 10px; /* Відступи */
-}
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Скидання стандартного стилю для WebKit */
-  appearance: none; /* Скидання стандартного стилю для інших браузерів */
-  width: 10px; /* Ширина "вушка" */
-  height: 10px; /* Висота "вушка" */
-  border-radius: 50%; /* Заокруглення */
-  background: #8ecb90; /* Колір "вушка" */
-  cursor: pointer; /* Курсор при наведенні */
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Тінь для "вушка" */
-}
-input[type="range"]::-webkit-slider-runnable-track {
-  background: #c92929; /* Колір фону треку */
-  border-radius: 5px; /* Заокруглення країв треку */
-}
-input[type="range"]::-moz-range-track {
-  background: #0722eb; /* Колір фону треку */
-  border-radius: 5px; /* Заокруглення країв треку */
 }

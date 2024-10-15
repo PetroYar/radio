@@ -3,7 +3,11 @@
 .aside {
 background: $bg-color;
 text-transform: capitalize;
+display: flex;
 padding: toRem(10);
+border: 1px solid rgba(211, 215, 223, 1);
+width: 20%;
+max-width: 250px;
 		&__title {
       color: $orange;
 			margin-bottom: toRem(5);
@@ -17,6 +21,7 @@ padding: toRem(10);
 		}
 
 		&__item {
+			text-transform: capitalize;
 			display: flex;
 			align-items: center;
 			
@@ -25,3 +30,7 @@ padding: toRem(10);
 			}
 		}
 }
+
+.logo{
+    margin-bottom: toRem(30);
+  }
