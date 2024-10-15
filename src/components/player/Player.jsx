@@ -14,17 +14,17 @@ const Player = (props) => {
     useRadio();
   const [currentTime, setCurrentTime] = useState(0);
  
-const formatTime = (seconds) => {
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const remainingSeconds = Math.floor(seconds % 60);
+// const formatTime = (seconds) => {
+//   const hours = Math.floor(seconds / 3600);
+//   const minutes = Math.floor((seconds % 3600) / 60);
+//   const remainingSeconds = Math.floor(seconds % 60);
 
-  const formattedHours = hours < 10 ? `0${hours}` : hours;
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+//   const formattedHours = hours < 10 ? `0${hours}` : hours;
+//   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+//   const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
 
-  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-};
+//   return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+// };
 
   const handleTimeUpdate = () => {
     setCurrentTime(audioRef.current.currentTime);
@@ -98,7 +98,7 @@ const formatTime = (seconds) => {
 
           <div className="player__nav "></div>
           <div className="player__range-slider range-slider">
-            <span className=" range-slider__time">{formatTime(currentTime)}</span>
+            {/* <span className=" range-slider__time">{formatTime(currentTime)}</span> */}
            
           </div>
           <p className="player__station-name">
