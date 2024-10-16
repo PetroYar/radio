@@ -5,10 +5,10 @@ import { RadioProvider } from './components/context/RadioContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <RadioProvider>
 
     <App />
     </RadioProvider>
-  </StrictMode>,
+  /* </StrictMode>, */
 )

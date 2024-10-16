@@ -20,5 +20,9 @@ max-width: 350px;
 }
 &__item{
   display: flex;
+  transition: all 1s;
 }
+}
+.bott{
+color: red;
 }

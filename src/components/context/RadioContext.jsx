@@ -42,6 +42,8 @@ const RadioProvider = ({ children }) => {
     audioRef,
     setTest,
     setTest1,
+    test,
+    test1
   };
   return (
     <RadioContext.Provider value={valueCTX}>{children}</RadioContext.Provider>

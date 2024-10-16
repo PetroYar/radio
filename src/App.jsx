@@ -9,6 +9,7 @@ import Header from "./components/header/Header";
 import FilterPanel from "./components/filterPanel/FilterPanel";
 import AudioVisualize from "./components/audioVisualizer/AudioVisualizer";
 import { useRadio } from "./components/hooks/useRadio";
+import AuthProvider from "./components/auth";
 
 function App() {
   const { audioRef } = useRadio();
@@ -17,18 +18,19 @@ function App() {
       {/* {radioStations && radioStations.length > 0 ? ( */}
         <div className="app">
           <Aside />
+          <AuthProvider/>
           <div className="content">
             <Header />
             <main className="main">
               <div className="test">
                 <StationList />
 
+            {audioRef.current?  <AudioVisualize /> : <p>dd</p>}
               </div>
               <FilterPanel />
               {/* <FavoriteStations /> */}
             </main>
             <Player />
-            {audioRef.current?  <AudioVisualize /> : <p>dd</p>}
                
           </div>
         </div>
