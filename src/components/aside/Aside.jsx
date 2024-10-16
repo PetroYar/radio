@@ -3,9 +3,10 @@ import { translationsAside } from "../config/translations";
 import "./Aside.scss";
 import logo from '../icon/logo.svg'
 import { useRadio } from "../hooks/useRadio";
+import useAuth from "../hooks/useAuth";
 const Aside = (props) => {
   const {language} = useRadio()
-  
+  const {user,signInWitGoogle} = useAuth()
 
 
   return (
@@ -37,6 +38,13 @@ const Aside = (props) => {
         </div>
       ))}
 
+<div className="auth">
+  {user?(
+    <p>{user.displayName}</p>
+  ):
+  <button onClick={signInWitGoogle}>увійти</button>
+  }
+</div>
       </div>
     </aside>
   );

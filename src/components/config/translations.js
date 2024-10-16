@@ -25,7 +25,7 @@ export const translationsAside = {
     ],
     general: [
       { name: "setting", icon: setting },
-      { name: "log in", icon:'dfdf' },
+      // { name: "log in", icon:'dfdf' },
     ],
   },
   ua: {
@@ -46,7 +46,7 @@ export const translationsAside = {
     ],
     general: [
       { name: "налаштування", icon: setting },
-      { name: "увійти", icon: 'dfdf' },
+      // { name: "увійти", icon: 'dfdf' },
     ],
   },
   pl: {
@@ -67,7 +67,7 @@ export const translationsAside = {
     ],
     general: [
       { name: "ustawienia", icon: setting },
-      { name: "zaloguj się", icon: 'dffd' },
+      // { name: "zaloguj się", icon: 'dffd' },
     ],
   },
 };
