@@ -9,7 +9,7 @@ import Header from "./components/header/Header";
 import FilterPanel from "./components/filterPanel/FilterPanel";
 import AudioVisualize from "./components/audioVisualizer/AudioVisualizer";
 import { useRadio } from "./components/hooks/useRadio";
-import AuthProvider from "./components/auth";
+import AuthProvider from "./components/Auth";
 
 function App() {
   const { audioRef } = useRadio();
