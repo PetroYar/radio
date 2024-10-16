@@ -1,7 +1,7 @@
-import { useState } from "react";
+
 import "./App.scss";
-import { RadioProvider } from "./components/context/RadioContext";
-import FavoriteStations from "./components/favoriteStations/FavoriteStations";
+
+// import FavoriteStations from "./components/favoriteStations/FavoriteStations";
 import Player from "./components/player/Player";
 import StationList from "./components/stationList/StationList";
 import Aside from "./components/aside/Aside";
@@ -18,13 +18,13 @@ function App() {
       {/* {radioStations && radioStations.length > 0 ? ( */}
         <div className="app">
           <Aside />
-          <AuthProvider/>
           <div className="content">
             <Header />
             <main className="main">
               <div className="test">
                 <StationList />
 
+          <AuthProvider/>
             {audioRef.current?  <AudioVisualize /> : <p>dd</p>}
               </div>
               <FilterPanel />
