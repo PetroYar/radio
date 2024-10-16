@@ -7,7 +7,7 @@ import StationList from "./components/stationList/StationList";
 import Aside from "./components/aside/Aside";
 import Header from "./components/header/Header";
 import FilterPanel from "./components/filterPanel/FilterPanel";
-import AudioVisualizer from "./components/audioVisualizer/AudioVisualizer";
+import AudioVisualize from "./components/audioVisualizer/AudioVisualizer";
 import { useRadio } from "./components/hooks/useRadio";
 
 function App() {
@@ -23,12 +23,13 @@ function App() {
               <div className="test">
                 <StationList />
 
-                <AudioVisualizer/>
               </div>
               <FilterPanel />
               {/* <FavoriteStations /> */}
             </main>
             <Player />
+            {audioRef.current?  <AudioVisualize /> : <p>dd</p>}
+               
           </div>
         </div>
       {/* ) : (

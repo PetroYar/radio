@@ -10,16 +10,17 @@ const RadioProvider = ({ children }) => {
   const [stationToFavorites, setStationToFavorites] = useState([]);
   const [language, setLanguage] = useState("en");
   const audioRef = useRef();
-
+  const [test,setTest] = useState('')
+  const [test1,setTest1] = useState('')
   useEffect(() => {
     const fetchStations = async () => {
       try {
-        const stations = await fetchRadioStations(20);
+        const stations = await fetchRadioStations(test1,test,'trtr');
         const filteredStations = stations.filter((station) => {
-          const isSupportedCodec = station.codec.toLowerCase() === "mp3"; // Або інший підтримуваний кодек
+          const isSupportedCodec = station.codec.toLowerCase() === "mp3"; 
           return isSupportedCodec;
         });
-        console.log(filteredStations);
+        
         setRadioStations(filteredStations);
       } catch (error) {
         console.error("Error ");
@@ -27,7 +28,9 @@ const RadioProvider = ({ children }) => {
     };
 
     fetchStations();
-  }, []);
+  }, [test,test1]);
+
+
   const valueCTX = {
     radioStations,
     stationIndex,
@@ -36,7 +39,9 @@ const RadioProvider = ({ children }) => {
     stationToFavorites,
     language,
     setLanguage,
-    audioRef
+    audioRef,
+    setTest,
+    setTest1,
   };
   return (
     <RadioContext.Provider value={valueCTX}>{children}</RadioContext.Provider>

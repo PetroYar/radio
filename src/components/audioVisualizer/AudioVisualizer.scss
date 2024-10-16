@@ -1,4 +1,18 @@
 .audio-visualizer{
-  background: #AC3838;
+  background: #A09C9C30;
   height: 300px;
+}
+.audio-visualizer {
+  border: 1px solid #000;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audio-visualizer canvas {
+  border: 1px solid #f76565;
+  width: 100%;
+  height: 100%;
 }

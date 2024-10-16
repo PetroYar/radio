@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect } from "react";
 import { formatTime } from "../utils/formatedTime";
 import "./Player.scss";
 import { useRadio } from "../hooks/useRadio";
@@ -27,6 +27,9 @@ const [playbackStatus,setPlaybackStatus] = useState(false)
       setStationIndex(0);
     }
   };
+
+
+
 
   const prevStation = () => {
     if (stationIndex > 0) {
@@ -60,14 +63,12 @@ const [playbackStatus,setPlaybackStatus] = useState(false)
           <button onClick={playRandomStation} className="player__random">
             <img src={random} alt="icon stir" />
           </button>
-          <button
-            onClick={prevStation}
-            className="player__button-prev"
-          
-          >
+          <button onClick={prevStation} className="player__button-prev">
             <img src={prev} alt="prev arrow" />
           </button>
           <audio
+            
+           
             autoPlay={stationIndex > 0}
             src={radioStations[stationIndex].url}
             ref={audioRef}
@@ -94,12 +95,8 @@ const [playbackStatus,setPlaybackStatus] = useState(false)
             <img src={next} alt="next arrow" />
           </button>
 
-          
-          
-            <span className="time">
-              {formatTime(currentTime)}
-            </span>
-         
+          <span className="time">{formatTime(currentTime)}</span>
+
           <p className="player__station-name">
             {radioStations[stationIndex].name
               .replace(

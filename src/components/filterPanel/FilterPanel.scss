@@ -6,6 +6,19 @@ padding: toRem(10);
  background: url(../icon/bg.png)0 0/100% 100% no-repeat;
 
   border: 1px solid rgba(211, 215, 223, 1);
-width: 20%;
-max-width: 250px;
+width: 25%;
+max-width: 350px;
+
+&__list{
+  display: flex;
+  flex-direction: column;
+  gap: toRem(5);
+  max-height: 47%;
+  overflow: hidden;
+  overflow-y: auto;
+  margin-bottom: toRem(20);
+}
+&__item{
+  display: flex;
+}
 }
