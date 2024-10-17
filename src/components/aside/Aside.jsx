@@ -4,9 +4,10 @@ import "./Aside.scss";
 import logo from '../icon/logo.svg'
 import { useRadio } from "../hooks/useRadio";
 import useAuth from "../hooks/useAuth";
+import { signOut } from "firebase/auth";
 const Aside = (props) => {
   const {language} = useRadio()
-  const {user,signInWitGoogle} = useAuth()
+  const {user,signInWithGoogle,signOut} = useAuth()
 
 
   return (
@@ -40,9 +41,12 @@ const Aside = (props) => {
 
 <div className="auth">
   {user?(
+    <>
     <p>{user.displayName}</p>
+<button onClick={signOut}>вийти</button>
+    </>
   ):
-  <button onClick={signInWitGoogle}>увійти</button>
+  <button onClick={signInWithGoogle}>увійти</button>
   }
 </div>
       </div>

@@ -31,7 +31,7 @@ export const fetchRadioStations = async ( country, tag, top ) => {
     if (tag !== '') {
       url += `/bytag/${tag}`;
     }
-    url += '?limit=3000'
+    url += '?limit=300'
 console.log(url)
     const response = await fetch(url);
     if (!response.ok) {

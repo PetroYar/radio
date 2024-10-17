@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { getAuth, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  signOut as firebaseSignOut,
+} from "firebase/auth";
 import { app, googleAuthProvider } from "../firebase"; // Змініть шлях, якщо потрібно
 
 const useAuth = () => {
@@ -14,6 +18,7 @@ const useAuth = () => {
   }, [auth]);
 
   const signInWithGoogle = () => {
+    
     signInWithPopup(auth, googleAuthProvider)
       .then((credentials) => setUser(credentials.user))
       .catch((error) => {
@@ -21,7 +26,17 @@ const useAuth = () => {
       });
   };
 
-  return { user, signInWithGoogle };
+  const signOut = () => {
+    firebaseSignOut(auth)
+      .then(() => {
+        setUser(null); // Оновлюємо стан користувача
+        console.log("User signed out");
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+      });
+  };
+  return { user, signInWithGoogle,signOut };
 };
 
 export default useAuth;

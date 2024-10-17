@@ -14,6 +14,7 @@ const RadioProvider = ({ children }) => {
   const [test1, setTest1] = useState("");
   const auth = getAuth(app);
   const [user, setUser] = useState(auth.currentUser);
+  
   useEffect(() => {
     const fetchStations = async () => {
       try {
