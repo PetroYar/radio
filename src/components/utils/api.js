@@ -2,7 +2,7 @@
 
 export const fetchRadioStations = async ( country, tag, top ) => {
   try {
-    // Створюємо URL з фільтрами
+    
     let url = `https://at1.api.radio-browser.info/json/stations`;
 
     if (country !== '') {

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./StationList.scss";
 import { useRadio } from "../hooks/useRadio";
+import { database } from "../firebase";
+import { ref, push, get, child, remove,onValue,off} from "firebase/database";
+import useAuth from "../hooks/useAuth";
+import FavoriteStations from "../favoriteStations/FavoriteStations";
 
 const StationList = (props) => {
   const {
@@ -9,19 +13,96 @@ const StationList = (props) => {
     setStationIndex,
     stationIndex,
     setStationToFavorites,
+    stationToFavorites,
   } = useRadio();
+  const { user } = useAuth();
   const selectStationByIndex = (index) => {
     setStationIndex(index);
   };
-  const addStationToFavorites = (station) => {
-    setStationToFavorites((favorites) => {
-      if (!favorites.some((fav) => fav.changeuuid === station.changeuuid)) {
-        return [...favorites, station];
+  const addStationToFavorites = async (station) => {
+    if (user) {
+      try {
+        const db = database;
+        const dbRef = ref(db, `users/${user.uid}/favoriteStation`);
+
+        await push(dbRef, {
+          stationName: station.name,
+          stationUrl: station.url,
+        });
+        console.log("added");
+      } catch (error) {
+        console.log(error);
       }
-      return favorites;
-    });
+    } else {
+      console.log("not user");
+    }
+  };
+useEffect(() => {
+  const db = database;
+
+  // Перевіряємо, чи існує user перед доступом до uid
+  if (!user) {
+    console.log("Користувач не авторизований.");
+    return; // Виходимо з ефекту, якщо user є null
+  }
+
+  const dbRef = ref(db, `users/${user.uid}/favoriteStation`);
+
+  const loadStations = () => {
+    // Слухач змін у реальному часі
+    onValue(
+      dbRef,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          const stations = Object.values(snapshot.val());
+          setStationToFavorites(stations);
+         
+        } else {
+          setStationToFavorites([]); // Якщо немає станцій, очищуємо список
+         
+        }
+      },
+      (error) => {
+        console.log(`loadStation ${error}`);
+      }
+    );
   };
 
+  loadStations();
+
+  // Очистка слухача при відмонтовані компонента
+  return () => {
+    off(dbRef); // Вимикаємо слухач, щоб уникнути витоків пам'яті
+  };
+}, [user]);
+
+
+
+  const checkIfStationExists = async (station) => {
+    const db = database;
+    const dbRef = ref(db, `users/${user.uid}/favoriteStation`);
+    const existingStationsSnapshot = await get(dbRef);
+    const existingStations = existingStationsSnapshot.val() || {};
+    const stationKey = Object.keys(existingStations).find(
+      (key) => existingStations[key].stationName === station.name
+    );
+    if (stationKey) {
+      removeStationToFavorites(stationKey);
+    } else {
+      addStationToFavorites(station);
+      console.log("add");
+    }
+  };
+  const removeStationToFavorites = async (stationKey) => {
+    try {
+      const db = database;
+      const dbRef = ref(db, `users/${user.uid}/favoriteStation/${stationKey}`);
+      await remove(dbRef);
+      console.log("Станцію видалено");
+    } catch (error) {
+      console.error("Помилка видалення станції:", error);
+    }
+  };
   return (
     <ul className="station-list ">
       {radioStations && radioStations.length > 0 ? (
@@ -44,7 +125,7 @@ const StationList = (props) => {
                   )
                   .trim()}
               </button>
-              <button onClick={() => addStationToFavorites(el)}>Like</button>
+              <button onClick={() => checkIfStationExists(el)}>Like</button>
             </li>
           );
         })

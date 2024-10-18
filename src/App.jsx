@@ -8,31 +8,15 @@ import Header from "./components/header/Header";
 import FilterPanel from "./components/filterPanel/FilterPanel";
 import AudioVisualize from "./components/audioVisualizer/AudioVisualizer";
 import { useRadio } from "./components/hooks/useRadio";
-import { get, ref,child } from "firebase/database";
-import { dbb } from "./components/firebase";
-import { useState } from "react";
+import FavoriteStations from "./components/favoriteStations/FavoriteStations";
 
 function App() {
-  const { audioRef } = useRadio();
-const [tests,setTEsts] = useState()
+  const { audioRef,user } = useRadio();
 
 
 
-  const testAwait = async () => {
-    try {
-      const db = dbb;
-      const dbRef = ref(db);
-      const snapshot = await get(child(dbRef, "users"));
-      if (snapshot.exists()) {
-        setTEsts(snapshot.val())
-      } else {
-        console.log("no data");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  console.log(tests)
+  
+
   return (
     <>
       {/* {radioStations && radioStations.length > 0 ? ( */}
@@ -40,7 +24,7 @@ const [tests,setTEsts] = useState()
         <Aside />
         <div className="content">
           <Header />
-          <button onClick={testAwait}>test </button>
+          {/* <button onClick={testSet}>test </button> */}
           <main className="main">
             <div className="test">
               <StationList />
@@ -49,7 +33,7 @@ const [tests,setTEsts] = useState()
               {audioRef.current ? <AudioVisualize /> : <p>dd</p>}
             </div>
             <FilterPanel />
-            {/* <FavoriteStations /> */}
+            <FavoriteStations />
           </main>
           <Player />
         </div>
