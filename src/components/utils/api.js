@@ -13,7 +13,7 @@ export const fetchRadioStations = async ( country, tag, top ) => {
       url += `/bytag/${tag}`;
     }
     url += '?limit=300'
-console.log(url)
+
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Error status ${response.status}`);

@@ -4,6 +4,7 @@ import { fetchRadioStations } from "../utils/api";
 import { app } from "../firebase";
 const RadioContext = createContext();
 import { getAuth } from "firebase/auth";
+import { messagesError } from "../config/translations";
 const RadioProvider = ({ children }) => {
   const [radioStations, setRadioStations] = useState([]);
   const [stationIndex, setStationIndex] = useState(0);
@@ -14,7 +15,23 @@ const RadioProvider = ({ children }) => {
   const [test1, setTest1] = useState("");
   const auth = getAuth(app);
   const [user, setUser] = useState(auth.currentUser);
-  
+  const [historyStation, setHistoryStation] = useState([]);
+  const [stationView, setStationView] = useState();
+  const [massage, setMassage] = useState("");
+
+  useEffect(() => {
+    if (stationView === historyStation) {
+      setMassage(messagesError[language].noStations);
+    } else if (stationView == stationToFavorites) {
+      setMassage(messagesError[language].loginFirst);
+    } else {
+      setMassage(messagesError[language].loading);
+      
+    }
+  }, [stationView,language]);
+  useEffect(() => {
+    setStationView(radioStations);
+  }, [radioStations]);
   useEffect(() => {
     const fetchStations = async () => {
       try {
@@ -33,6 +50,26 @@ const RadioProvider = ({ children }) => {
     fetchStations();
   }, [test, test1]);
 
+  const switchStationView = (stations) => {
+    setStationIndex(0);
+    if (stations === "favorite") {
+      setStationView(stationToFavorites);
+    } else if (stations === "home") {
+      setStationView(radioStations);
+    } else {
+      setStationView(historyStation);
+    }
+  };
+  const addHistory = () => {
+    const stationExists = historyStation.some(
+      (station) => station.changeuuid === stationView[stationIndex].changeuuid
+    );
+
+    if (!stationExists) {
+      setHistoryStation((stations) => [...stations, stationView[stationIndex]]);
+    }
+  };
+
   const valueCTX = {
     radioStations,
     stationIndex,
@@ -46,7 +83,13 @@ const RadioProvider = ({ children }) => {
     setTest1,
     test,
     test1,
-    user,setUser,auth
+    // user,setUser,auth
+    switchStationView,
+    stationView,
+    historyStation,
+    setHistoryStation,
+    massage,
+    addHistory,
   };
   return (
     <RadioContext.Provider value={valueCTX}>{children}</RadioContext.Provider>

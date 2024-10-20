@@ -1,3 +1,4 @@
+@import '../../App.scss';
 .station-list {
   display: flex;
   flex-direction: column;
@@ -10,10 +11,20 @@
     justify-content: space-between;
     transition: color 0.7s;
     &--active {
-      color: red;
+      color: $orange;
     }
   }
 
   &__item-like-button {
   }
+}
+.station-list {
+
+		&__favorites {
+     color: $bg-color;
+     transition: color 0.6s;
+		}
+}
+.favorite{
+  color: $orange;
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { formatTime } from "../utils/formatedTime";
 import "./Player.scss";
 import { useRadio } from "../hooks/useRadio";
@@ -10,32 +10,32 @@ import random from "../icon/random.svg";
 import iconVolume from "../icon/volume.svg";
 import radioIcon from "../icon/radioIcon.png";
 
-
 const Player = (props) => {
-  const { audioRef, radioStations, stationIndex, setStationIndex } =
-    useRadio();
+  const { audioRef, stationIndex, setStationIndex, stationView,setHistoryStation,historyStation,addHistory } = useRadio();
   const [currentTime, setCurrentTime] = useState(0);
-const [playbackStatus,setPlaybackStatus] = useState(false)
+  const [playbackStatus, setPlaybackStatus] = useState(false);
 
   const handleTimeUpdate = () => {
     setCurrentTime(audioRef.current.currentTime);
   };
   const nextStation = () => {
-    if (stationIndex < radioStations.length - 1) {
+    play()
+    if (stationIndex < stationView.length - 1) {
       setStationIndex((current) => current + 1);
+
     } else {
       setStationIndex(0);
     }
   };
 
-
-
-
   const prevStation = () => {
+      play();
+
     if (stationIndex > 0) {
       setStationIndex((current) => current - 1);
     } else {
-      setStationIndex(radioStations.length - 1);
+      setStationIndex(stationView.length - 1);
+      
     }
   };
   const handleVolumeChange = (event) => {
@@ -43,22 +43,27 @@ const [playbackStatus,setPlaybackStatus] = useState(false)
     audioRef.current.volume = volume;
   };
   const play = () => {
+    
     audioRef.current.play();
     setPlaybackStatus(true);
-    
+    if(stationView !== historyStation){
+
+      addHistory()
+    }
   };
+  
   const stop = () => {
     audioRef.current.pause();
     setPlaybackStatus(false);
   };
   const playRandomStation = () => {
-    const randomNum = Math.floor(Math.random() * radioStations.length);
-    setStationIndex(randomNum)
+    const randomNum = Math.floor(Math.random() * stationView.length);
+    setStationIndex(randomNum);
   };
- 
+
   return (
     <div className="player">
-      {radioStations && radioStations.length > 0 ? (
+      {stationView && stationView.length > 0 ? (
         <>
           <button onClick={playRandomStation} className="player__random">
             <img src={random} alt="icon stir" />
@@ -67,10 +72,8 @@ const [playbackStatus,setPlaybackStatus] = useState(false)
             <img src={prev} alt="prev arrow" />
           </button>
           <audio
-            
-           
-            autoPlay={stationIndex > 0}
-            src={radioStations[stationIndex].url}
+            autoPlay={stationIndex>0}
+            src={stationView[stationIndex].url}
             ref={audioRef}
             onTimeUpdate={handleTimeUpdate}
             className="player__audio"
@@ -98,7 +101,7 @@ const [playbackStatus,setPlaybackStatus] = useState(false)
           <span className="time">{formatTime(currentTime)}</span>
 
           <p className="player__station-name">
-            {radioStations[stationIndex].name
+            {stationView[stationIndex].name
               .replace(
                 / - \d+kb\/s|\s+\d+(\.\d+)?FM|\s+\(\d+\s+kбіт\/с\)|\s+\d+\.\d+/g,
                 ""
@@ -115,10 +118,10 @@ const [playbackStatus,setPlaybackStatus] = useState(false)
             />
           </div>
 
-          {radioStations[stationIndex].favicon ? (
+          {stationView[stationIndex].favicon ? (
             <img
               className="player__img"
-              src={radioStations[stationIndex].favicon}
+              src={stationView[stationIndex].favicon}
               alt="icon station"
             />
           ) : (

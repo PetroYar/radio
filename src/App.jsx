@@ -8,7 +8,7 @@ import Header from "./components/header/Header";
 import FilterPanel from "./components/filterPanel/FilterPanel";
 import AudioVisualize from "./components/audioVisualizer/AudioVisualizer";
 import { useRadio } from "./components/hooks/useRadio";
-import FavoriteStations from "./components/favoriteStations/FavoriteStations";
+// import FavoriteStations from "./components/favoriteStations/FavoriteStations";
 
 function App() {
   const { audioRef,user } = useRadio();
@@ -33,7 +33,7 @@ function App() {
               {audioRef.current ? <AudioVisualize /> : <p>dd</p>}
             </div>
             <FilterPanel />
-            <FavoriteStations />
+            {/* <FavoriteStations /> */}
           </main>
           <Player />
         </div>

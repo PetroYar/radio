@@ -71,3 +71,34 @@ export const translationsAside = {
     ],
   },
 };
+export const translationsHeader = {
+  en: {
+    login: "Login",
+    logout: "Logout",
+  },
+  pl: {
+    login: "Zaloguj się",
+    logout: "Wyloguj się",
+  },
+  ua: {
+    login: "Увійти",
+    logout: "Вийти",
+  },
+};
+export const messagesError = {
+  en: {
+    noStations: "No stations yet",
+    loginFirst: "Please log in first",
+    loading: "Please wait...",
+  },
+  pl: {
+    noStations: "Brak stacji",
+    loginFirst: "Najpierw zaloguj się",
+    loading: "Proszę czekać...",
+  },
+  ua: {
+    noStations: "ще немає станцій",
+    loginFirst: "спочатку увійдіть в свій акаунт",
+    loading: "почекайте будь-ласка",
+  },
+};
