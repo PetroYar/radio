@@ -6,9 +6,9 @@ padding: toRem(10);
  background: url(../icon/bg.png)0 0/100% 100% no-repeat;
 
   border: 1px solid rgba(211, 215, 223, 1);
-width: 25%;
-max-width: 350px;
-
+  max-width: 350px;
+  
+  min-width: 10%;
 &__list{
   display: flex;
   flex-direction: column;

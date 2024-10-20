@@ -5,6 +5,7 @@ import { useRadio } from "../hooks/useRadio";
 import { database } from "../firebase";
 import { ref, push, get, remove, onValue, off } from "firebase/database";
 import useAuth from "../hooks/useAuth";
+import radioIcon from "../icon/radioIcon.png";
 
 const StationList = (props) => {
   const {
@@ -21,7 +22,7 @@ const StationList = (props) => {
     setStationIndex(index);
     addHistory();
   };
-  
+
   const addStationToFavorites = async (station) => {
     if (user) {
       try {
@@ -120,12 +121,23 @@ const StationList = (props) => {
                 onClick={() => selectStationByIndex(ind)}
                 className="station-list__item-button"
               >
-                {el.name
-                  .replace(
-                    / - \d+kb\/s|\s+\d+(\.\d+)?FM|\s+\(\d+\s+kбіт\/с\)|\s+\d+\.\d+/g,
-                    ""
-                  )
-                  .trim()}
+                {el.favicon ? (
+                  <img
+                    
+                    src={el.favicon}
+                    alt={el.name}
+                  />
+                ) : (
+                  <img  src={radioIcon} alt="radio" />
+                )}
+                <p>
+                  {el.name
+                    .replace(
+                      / - \d+kb\/s|\s+\d+(\.\d+)?FM|\s+\(\d+\s+kбіт\/с\)|\s+\d+\.\d+/g,
+                      ""
+                    )
+                    .trim()}
+                </p>
               </button>
               <button
                 className={`station-list__favorites ${
