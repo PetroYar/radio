@@ -7,7 +7,18 @@ display: flex;
 padding: toRem(10);
 border: 1px solid rgba(211, 215, 223, 1);
 width: 20%;
+min-width: max-content;
 max-width: 250px;
+transition: left 0.5s;
+@media (max-width:$mobile){
+	 position: absolute; 
+	 z-index: 2;
+	 top: toRem(62);
+	 left: toRem(-150);
+}
+&.active{
+	left: 0;
+}
 		&__title {
       color: $orange;
 			margin-bottom: toRem(5);
@@ -33,4 +44,8 @@ max-width: 250px;
 
 .logo{
     margin-bottom: toRem(30);
+	@media (max-width:$mobile){
+		 margin-bottom: toRem(0); 
+		
+	}
   }

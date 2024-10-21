@@ -3,49 +3,51 @@ import { translationsAside } from "../config/translations";
 import "./Aside.scss";
 import logo from "../icon/logo.svg";
 import { useRadio } from "../hooks/useRadio";
+import { useAdaptive } from "../hooks/useAdaptive";
 const Aside = (props) => {
   const { language, switchStationView, stationToFavorite } = useRadio();
- const handleButtonClick = (index, ind) => {
+  const { windowWidth,showBurgerMenu } = useAdaptive();
 
-   switch (ind) {
-     case 0: // 'menu'
-       if (index === 0) {
-         switchStationView('home')
-       }
-       break;
-     case 1: // 'history'
-       if (index === 0) {
-         switchStationView('test')
-       } else if (index === 1) {
-         switchStationView('favorite');
-       }
-       break;
-     case 2: // 'share'
-       if (index === 0) {
-         console.log("Instagram clicked");
-       } else if (index === 1) {
-         console.log("Facebook clicked");
-       }
-       break;
-     case 3: // 'general'
-       if (index === 0) {
-         console.log("Settings clicked");
-       } else if (index === 1) {
-        
-       }
-       break;
-     default:
-       console.log("No action for this button");
-   }
- };
-
+  const handleButtonClick = (index, ind) => {
+    switch (ind) {
+      case 0: // 'menu'
+        if (index === 0) {
+          switchStationView("home");
+        }
+        break;
+      case 1: // 'history'
+        if (index === 0) {
+          switchStationView("test");
+        } else if (index === 1) {
+          switchStationView("favorite");
+        }
+        break;
+      case 2: // 'share'
+        if (index === 0) {
+          console.log("Instagram clicked");
+        } else if (index === 1) {
+          console.log("Facebook clicked");
+        }
+        break;
+      case 3: // 'general'
+        if (index === 0) {
+          console.log("Settings clicked");
+        } else if (index === 1) {
+        }
+        break;
+      default:
+        console.log("No action for this button");
+    }
+  };
 
   return (
-    <aside className="aside">
+    <aside className={`aside ${showBurgerMenu? 'active': ''}`}>
       <div className="aside__container">
-        <div className="logo">
-          <img src={logo} alt="logo world radio" />
-        </div>
+        {windowWidth > 768.98 && (
+          <div className="logo">
+            <img src={logo} alt="logo world radio" />
+          </div>
+        )}
         {Object.keys(translationsAside[language].labels).map((key, ind) => (
           <div key={key}>
             <h3 className="aside__title">
@@ -56,7 +58,7 @@ const Aside = (props) => {
               {translationsAside[language][key].map((item, index) => (
                 <li key={index}>
                   <button
-                    onClick={()=>handleButtonClick(index,ind)}
+                    onClick={() => handleButtonClick(index, ind)}
                     className="aside__item"
                   >
                     <img
@@ -71,8 +73,6 @@ const Aside = (props) => {
             </ul>
           </div>
         ))}
-
-       
       </div>
     </aside>
   );

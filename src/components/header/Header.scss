@@ -4,34 +4,34 @@
   background: white;
   display: flex;
   gap: toRem(20);
+  align-items: center;
   border: 1px solid rgba(211, 215, 223, 1);
 
-padding: toRem(10) toRem(5);
+  padding: toRem(10) toRem(5);
   &__input {
     border: 1px solid rgba(211, 215, 223, 1);
     border-radius: 8px;
     display: flex;
     align-items: center;
     width: 100%;
-    input{
+    input {
       width: 100%;
     }
   }
-  
 }
 
 .launge {
   display: flex;
   align-items: center;
 }
-.auth{
+.auth {
   display: flex;
   width: 270px;
-  
+
   align-items: center;
   justify-content: space-between;
   color: $orange;
-  button{
+  button {
     transition: all 0.6s;
     margin-left: auto;
     border: 1px solid $orange;
@@ -39,8 +39,69 @@ padding: toRem(10) toRem(5);
     // border-radius: 8px;
     color: $orange;
     background: $bg-color;
-    &:hover{
-      background:rgba(229, 234, 245, 0.3);
+    &:hover {
+      background: rgba(229, 234, 245, 0.3);
     }
   }
+}
+
+.burger {
+  position: relative;
+  padding: toRem(20) toRem(20);
+  // background: #00F44D;
+  @media (min-width:$mobile){
+      display: none;
+  }
+  &::after {
+    transition: all 1s 0.3s;
+    content: "";
+    height: 2px;
+    width: 80%;
+    position: absolute;
+    background: $orange;
+    left: 0;
+  }
+  span {
+
+    &::after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      background: $orange;
+      left: 0;
+      top: toRem(5);
+transition: all 1s;
+
+    }
+    &::before {
+      content: "";
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      background: $orange;
+      left: 0;
+      bottom: toRem(5);
+transition: all 1s ;
+
+    }
+  }
+  &--active {
+    
+    &::after {
+      left: -100px;
+    }
+span {
+      &::after {
+        transform:  rotate(45deg); // Повертаємо на 135 градусів
+        transform-origin: left;
+        
+      }
+
+      &::before {
+        transform:  rotate(-45deg); // Повертаємо на 135 градусів
+        transform-origin: left;
+
+      }
+    }  }
 }

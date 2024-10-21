@@ -11,7 +11,14 @@ import iconVolume from "../icon/volume.svg";
 import radioIcon from "../icon/radioIcon.png";
 
 const Player = (props) => {
-  const { audioRef, stationIndex, setStationIndex, stationView,setHistoryStation,historyStation,addHistory } = useRadio();
+  const {
+    audioRef,
+    stationIndex,
+    setStationIndex,
+    stationView,
+    historyStation,
+    addHistory,
+  } = useRadio();
   const [currentTime, setCurrentTime] = useState(0);
   const [playbackStatus, setPlaybackStatus] = useState(false);
 
@@ -19,23 +26,21 @@ const Player = (props) => {
     setCurrentTime(audioRef.current.currentTime);
   };
   const nextStation = () => {
-    play()
+    play();
     if (stationIndex < stationView.length - 1) {
       setStationIndex((current) => current + 1);
-
     } else {
       setStationIndex(0);
     }
   };
 
   const prevStation = () => {
-      play();
+    play();
 
     if (stationIndex > 0) {
       setStationIndex((current) => current - 1);
     } else {
       setStationIndex(stationView.length - 1);
-      
     }
   };
   const handleVolumeChange = (event) => {
@@ -43,15 +48,13 @@ const Player = (props) => {
     audioRef.current.volume = volume;
   };
   const play = () => {
-    
     audioRef.current.play();
     setPlaybackStatus(true);
-    if(stationView !== historyStation){
-
-      addHistory()
+    if (stationView !== historyStation) {
+      addHistory();
     }
   };
-  
+
   const stop = () => {
     audioRef.current.pause();
     setPlaybackStatus(false);
@@ -72,7 +75,7 @@ const Player = (props) => {
             <img src={prev} alt="prev arrow" />
           </button>
           <audio
-            autoPlay={stationIndex>0}
+            autoPlay={stationIndex > 0}
             src={stationView[stationIndex].url}
             ref={audioRef}
             onTimeUpdate={handleTimeUpdate}

@@ -18,6 +18,7 @@ export const fetchRadioStations = async ( country, tag, top ) => {
     if (!response.ok) {
       throw new Error(`Error status ${response.status}`);
     }
+    
 
     const stationsData = await response.json();
     return stationsData;
