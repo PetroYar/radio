@@ -11,12 +11,14 @@
     scrollbar-width: 5px;
 	@media (max-width:$mobile){
 				 gap: toRem(10); 
+         padding-bottom: toRem(60);
 			}
   &__item {
     position: relative;
     transition: color 0.7s;
     width: 150px;
-    @include adaptiveValue("width",150 ,80 );
+   
+    @include adaptiveValue("width",150 ,90 );
     height: toRem(100);
     overflow: hidden;
     text-align: center;
@@ -24,6 +26,7 @@
     background: $bg-color;
     display: flex;
     flex-direction: column;
+   
     &--active {
       color: $orange;
     }
@@ -33,6 +36,10 @@
     position: absolute;
     right: toRem(5);
     top: toRem(5);
+    @media (max-width:$mobile){
+       top: 0;
+       right: 0; 
+    }
   }
 
   &__favorites {
@@ -53,10 +60,15 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
+
     }
     img {
       width: 40px;
       height: 40px;
+      @media (max-width:$mobile){
+         width: toRem(30);
+         height: toRem(30); 
+      }
     }
   }
 }
