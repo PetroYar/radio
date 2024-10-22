@@ -5,9 +5,13 @@ const AdaptiveContext = createContext({});
 const AdaptiveProvider = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      const currentWidth = window.innerWidth;
+      setWindowWidth(currentWidth);
+      setIsMobile(currentWidth > 767.98);
     };
 
     window.addEventListener("resize", handleResize);
@@ -17,14 +21,15 @@ const AdaptiveProvider = ({ children }) => {
     };
   }, []);
 
-const handleBurgerMenu = () => {
-  setShowBurgerMenu((prev) => !prev);
-};
+  const handleBurgerMenu = () => {
+    setShowBurgerMenu((prev) => !prev);
+  };
 
   const valueCTX = {
     windowWidth,
     showBurgerMenu,
-    handleBurgerMenu
+    handleBurgerMenu,
+    isMobile
   };
   return (
     <AdaptiveContext.Provider value={valueCTX}>

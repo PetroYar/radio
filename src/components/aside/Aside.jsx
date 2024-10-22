@@ -1,12 +1,16 @@
 import React from "react";
-import { translationsAside } from "../config/translations";
+import { translationsAside,translationsHeader } from "../config/translations";
 import "./Aside.scss";
 import logo from "../icon/logo.svg";
 import { useRadio } from "../hooks/useRadio";
 import { useAdaptive } from "../hooks/useAdaptive";
+import useAuth from "../hooks/useAuth";
+import globe from "../icon/Globe.svg";
+
 const Aside = (props) => {
-  const { language, switchStationView, stationToFavorite } = useRadio();
-  const { windowWidth,showBurgerMenu } = useAdaptive();
+  const { language, switchStationView,handleLanguageChange } = useRadio();
+  const { isMobile,showBurgerMenu } = useAdaptive();
+  const { user, signInWithGoogle, signOut } = useAuth();
 
   const handleButtonClick = (index, ind) => {
     switch (ind) {
@@ -41,9 +45,9 @@ const Aside = (props) => {
   };
 
   return (
-    <aside className={`aside ${showBurgerMenu? 'active': ''}`}>
+    <aside className={`aside ${showBurgerMenu ? "active" : ""}`}>
       <div className="aside__container">
-        {windowWidth > 768.98 && (
+        {isMobile && (
           <div className="logo">
             <img src={logo} alt="logo world radio" />
           </div>
@@ -73,6 +77,38 @@ const Aside = (props) => {
             </ul>
           </div>
         ))}
+      {!isMobile && (
+        <>
+        
+        <div className="auth">
+          {user ? (
+            <>
+              <p>{user.displayName}</p>
+              <button onClick={signOut}>
+                {translationsHeader[language].logout}
+              </button>
+            </>
+          ) : (
+            <button onClick={signInWithGoogle}>
+              {translationsHeader[language].login}
+            </button>
+          )}
+        </div>
+         <div className="launge">
+            <img src={globe} alt="globe" />
+            <select
+              name="language"
+              value={language}
+              onChange={handleLanguageChange}
+            >
+              <option value="ua">Uk</option>
+              <option value="en">Eng</option>
+              <option value="pl">PL</option>
+            </select>
+          </div>
+        </>
+
+      )}
       </div>
     </aside>
   );

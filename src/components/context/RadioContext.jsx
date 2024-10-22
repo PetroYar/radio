@@ -69,7 +69,9 @@ const RadioProvider = ({ children }) => {
       setHistoryStation((stations) => [...stations, stationView[stationIndex]]);
     }
   };
-
+ const handleLanguageChange = (event) => {
+   setLanguage(event.target.value); // Оновлюємо стан на основі обраного значення
+ };
   const valueCTX = {
     radioStations,
     stationIndex,
@@ -90,6 +92,7 @@ const RadioProvider = ({ children }) => {
     setHistoryStation,
     massage,
     addHistory,
+    handleLanguageChange
   };
   return (
     <RadioContext.Provider value={valueCTX}>{children}</RadioContext.Provider>

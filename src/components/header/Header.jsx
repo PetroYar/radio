@@ -11,18 +11,19 @@ import { useAdaptive } from "../hooks/useAdaptive";
 
 const Header = (props) => {
   const { language, setLanguage } = useRadio(); // Початкова мова — англійська
-  const { user, signInWithGoogle, signOut } = useAuth();
-  const { windowWidth, handleBurgerMenu,showBurgerMenu } = useAdaptive();
+  const { user, signInWithGoogle, signOut,handleLanguageChange } = useAuth();
+  const { handleBurgerMenu, showBurgerMenu, isMobile } = useAdaptive();
 
-  const handleLanguageChange = (event) => {
-    setLanguage(event.target.value); // Оновлюємо стан на основі обраного значення
-  };
+ 
   return (
     <header className="header">
-        <button onClick={()=>handleBurgerMenu()} className={`burger ${showBurgerMenu? 'burger--active': ''}`}>
+      <button
+        onClick={() => handleBurgerMenu()}
+        className={`burger ${showBurgerMenu ? "burger--active" : ""}`}
+      >
         <span></span>
       </button>
-      {windowWidth < 768.98 && (
+      {!isMobile && (
         <div className="logo">
           <img src={logo} alt="logo world radio" />
         </div>
@@ -31,32 +32,36 @@ const Header = (props) => {
         <img src={search} alt="search" />
         <input type="text" />
       </div>
-      <div className="auth">
-        {user ? (
-          <>
-            <p>{user.displayName}</p>
-            <button onClick={signOut}>
-              {translationsHeader[language].logout}
-            </button>
-          </>
-        ) : (
-          <button onClick={signInWithGoogle}>
-            {translationsHeader[language].login}
-          </button>
-        )}
-      </div>
-      <div className="launge">
-        <img src={globe} alt="globe" />
-        <select
-          name="language"
-          value={language}
-          onChange={handleLanguageChange}
-        >
-          <option value="ua">Uk</option>
-          <option value="en">Eng</option>
-          <option value="pl">PL</option>
-        </select>
-      </div>
+      {isMobile && (
+        <>
+          <div className="auth">
+            {user ? (
+              <>
+                <p>{user.displayName}</p>
+                <button onClick={signOut}>
+                  {translationsHeader[language].logout}
+                </button>
+              </>
+            ) : (
+              <button onClick={signInWithGoogle}>
+                {translationsHeader[language].login}
+              </button>
+            )}
+          </div>
+          <div className="launge">
+            <img src={globe} alt="globe" />
+            <select
+              name="language"
+              value={language}
+              onChange={handleLanguageChange}
+            >
+              <option value="ua">Uk</option>
+              <option value="en">Eng</option>
+              <option value="pl">PL</option>
+            </select>
+          </div>
+        </>
+      )}
     </header>
   );
 };

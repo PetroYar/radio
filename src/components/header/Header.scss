@@ -27,9 +27,8 @@
 .auth {
   display: flex;
   width: 270px;
-
-  align-items: center;
-  justify-content: space-between;
+flex-direction: column;
+gap: toRem(5);
   color: $orange;
   button {
     transition: all 0.6s;
@@ -41,6 +40,11 @@
     background: $bg-color;
     &:hover {
       background: rgba(229, 234, 245, 0.3);
+    }
+    @media (max-width:$mobile){
+       margin-left: 0; 
+       width: max-content;
+       margin-bottom: toRem(10);
     }
   }
 }

@@ -9,6 +9,9 @@ padding: toRem(10);
   max-width: 350px;
   
   min-width: 10%;
+  @media (max-width:$mobile){
+     display: none; 
+  }
 &__list{
   display: flex;
   flex-direction: column;
