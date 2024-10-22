@@ -11,7 +11,7 @@
     scrollbar-width: 5px;
 	@media (max-width:$mobile){
 				 gap: toRem(10); 
-         padding-bottom: toRem(60);
+         padding-bottom: toRem(90);
 			}
   &__item {
     position: relative;
