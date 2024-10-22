@@ -7,6 +7,8 @@
   overflow: auto;
   flex-grow: 1;
   gap: toRem(20);
+  position: relative;
+  z-index: 22;
   margin-left: toRem(10);
     scrollbar-width: 5px;
 	@media (max-width:$mobile){
@@ -50,6 +52,8 @@
     overflow: hidden;
     overflow-y: auto;
     display: flex;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
     align-items: center;
     gap: toRem(8);
