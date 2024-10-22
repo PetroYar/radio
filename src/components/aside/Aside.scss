@@ -13,8 +13,9 @@ transition: left 0.5s;
 	position: absolute; 
 	z-index: 2;
 	top: toRem(62);
-	left: toRem(-150);
+	left: toRem(-180);
 	min-width: toRem(160);
+  
 	 
 }
 &.active{
@@ -30,6 +31,7 @@ transition: left 0.5s;
 			flex-direction: column;
 			gap: toRem(5);
 			margin-bottom: toRem(5);
+		
 		}
 
 		&__item {

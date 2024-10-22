@@ -27,9 +27,13 @@
 .auth {
   display: flex;
   width: 270px;
-flex-direction: column;
+
 gap: toRem(5);
   color: $orange;
+  @media (max-width:$mobile){
+flex-direction: column;
+      
+  }
   button {
     transition: all 0.6s;
     margin-left: auto;
