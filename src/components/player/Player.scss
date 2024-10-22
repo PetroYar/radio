@@ -7,7 +7,19 @@
   background: $bg-color;
   border: 1px solid rgba(211, 215, 223, 1);
   padding: toRem(0) toRem(30) toRem(0) toRem(10);
- 
+ @media (max-width:$mobile){
+   flex-direction: column; 
+   padding: toRem(10);
+ }
+ &__buttons{
+  display: flex;
+  align-items: center;
+  gap: toRem(40);
+  @media (max-width:$mobile){
+     order: 2; 
+    
+  }
+ }
   &__station-name {
     text-align: center;
     display: flex;
@@ -18,10 +30,17 @@
     overflow: hidden; 
     text-overflow: ellipsis;
     color: $orange;
+    @media (max-width:$mobile){
+       order: 1; 
+       width: 300px;
+    }
   }
-&.time{
+.time{
   
   text-align: center;
+  @media (max-width:$mobile){
+     display: none; 
+  }
 }
   &__button-prev {
     transition: opacity 0.6s;
@@ -52,6 +71,9 @@
     display: flex;
     width: toRem(150);
     align-items: center;
+    @media (max-width:$mobile){
+       display: none; 
+    }
     input {
       -webkit-appearance: none;
       width: 100%;
@@ -106,5 +128,8 @@
   &__img{
   width: 70px;
   height: 70px;
+  @media (max-width:$mobile){
+     display: none; 
+  }
 }
 }

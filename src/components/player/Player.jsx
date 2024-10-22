@@ -18,6 +18,7 @@ const Player = (props) => {
     stationView,
     historyStation,
     addHistory,
+    isMobile,
   } = useRadio();
   const [currentTime, setCurrentTime] = useState(0);
   const [playbackStatus, setPlaybackStatus] = useState(false);
@@ -68,49 +69,54 @@ const Player = (props) => {
     <div className="player">
       {stationView && stationView.length > 0 ? (
         <>
-          <button onClick={playRandomStation} className="player__random">
-            <img src={random} alt="icon stir" />
-          </button>
-          <button onClick={prevStation} className="player__button-prev">
-            <img src={prev} alt="prev arrow" />
-          </button>
-          <audio
-            autoPlay={stationIndex > 0}
-            src={stationView[stationIndex].url}
-            ref={audioRef}
-            onTimeUpdate={handleTimeUpdate}
-            className="player__audio"
-          ></audio>
-          <button
-            className={`player__stop ${!playbackStatus ? "playing" : ""}`}
-            onClick={stop}
-          >
-            <img src={iconStop} alt="stop" />
-          </button>
-          <button
-            onClick={play}
-            className={`player__play ${playbackStatus ? "playing" : ""}`}
-          >
-            <img src={iconPlay} alt="play" />
-          </button>
-          <button
-            onClick={nextStation}
-            className="player__button-next"
-            aria-label="Перейти до наступної станції"
-          >
-            <img src={next} alt="next arrow" />
-          </button>
+        
+          <div className="player__buttons">
+            <button onClick={playRandomStation} className="player__random">
+              <img src={random} alt="icon stir" />
+            </button>
+            <button onClick={prevStation} className="player__button-prev">
+              <img src={prev} alt="prev arrow" />
+            </button>
+            <audio
+              autoPlay={stationIndex > 0}
+              src={stationView[stationIndex].url}
+              ref={audioRef}
+              onTimeUpdate={handleTimeUpdate}
+              className="player__audio"
+            ></audio>
+            <button
+              className={`player__stop ${!playbackStatus ? "playing" : ""}`}
+              onClick={stop}
+            >
+              <img src={iconStop} alt="stop" />
+            </button>
+            <button
+              onClick={play}
+              className={`player__play ${playbackStatus ? "playing" : ""}`}
+            >
+              <img src={iconPlay} alt="play" />
+            </button>
+            <button
+              onClick={nextStation}
+              className="player__button-next"
+              aria-label="Перейти до наступної станції"
+            >
+              <img src={next} alt="next arrow" />
+            </button>
+          </div>
 
           <span className="time">{formatTime(currentTime)}</span>
+         
+            <p className="player__station-name">
+              {stationView[stationIndex].name
+                .replace(
+                  / - \d+kb\/s|\s+\d+(\.\d+)?FM|\s+\(\d+\s+kбіт\/с\)|\s+\d+\.\d+/g,
+                  ""
+                )
+                .trim()}
+            </p>
+          
 
-          <p className="player__station-name">
-            {stationView[stationIndex].name
-              .replace(
-                / - \d+kb\/s|\s+\d+(\.\d+)?FM|\s+\(\d+\s+kбіт\/с\)|\s+\d+\.\d+/g,
-                ""
-              )
-              .trim()}
-          </p>
           <div className="player__volume-slider">
             <img src={iconVolume} alt="volume" />
             <input
