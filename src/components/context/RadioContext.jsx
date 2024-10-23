@@ -13,10 +13,8 @@ const RadioProvider = ({ children }) => {
   const audioRef = useRef();
   const [test, setTest] = useState("");
   const [test1, setTest1] = useState("");
-  const auth = getAuth(app);
-  const [user, setUser] = useState(auth.currentUser);
   const [historyStation, setHistoryStation] = useState([]);
-  const [stationView, setStationView] = useState();
+  const [stationView, setStationView] = useState([]);
   const [massage, setMassage] = useState("");
 
   useEffect(() => {
@@ -49,7 +47,7 @@ const RadioProvider = ({ children }) => {
 
     fetchStations();
   }, [test, test1]);
-
+  
   const switchStationView = (stations) => {
     setStationIndex(0);
     if (stations === "favorite") {
@@ -59,6 +57,7 @@ const RadioProvider = ({ children }) => {
     } else {
       setStationView(historyStation);
     }
+   
   };
   const addHistory = () => {
     const stationExists = historyStation.some(
@@ -85,7 +84,6 @@ const RadioProvider = ({ children }) => {
     setTest1,
     test,
     test1,
-    // user,setUser,auth
     switchStationView,
     stationView,
     historyStation,

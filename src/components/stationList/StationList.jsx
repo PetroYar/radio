@@ -7,14 +7,14 @@ import { ref, push, get, remove, onValue, off } from "firebase/database";
 import useAuth from "../hooks/useAuth";
 import radioIcon from "../icon/radioIcon.png";
 
-const StationList = (props) => {
+const StationList = () => {
   const {
     setStationIndex,
     stationIndex,
     setStationToFavorites,
     stationToFavorites,
     massage,
-    stationView,
+   stationView,
     addHistory,
   } = useRadio();
   const { user } = useAuth();

@@ -9,10 +9,11 @@ import globe from "../icon/Globe.svg";
 
 const Aside = (props) => {
   const { language, switchStationView,handleLanguageChange } = useRadio();
-  const { isMobile,showBurgerMenu } = useAdaptive();
+  const { isMobile, showBurgerMenu, handleBurgerMenu } = useAdaptive();
   const { user, signInWithGoogle, signOut } = useAuth();
 
   const handleButtonClick = (index, ind) => {
+    handleBurgerMenu()
     switch (ind) {
       case 0: // 'menu'
         if (index === 0) {

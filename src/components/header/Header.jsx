@@ -30,7 +30,7 @@ const Header = (props) => {
       )}
       <div className="header__input">
         <img src={search} alt="search" />
-        <input type="text" />
+        <input type="text"  />
       </div>
       {isMobile && (
         <>

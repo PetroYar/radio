@@ -8,12 +8,14 @@ import Header from "./components/header/Header";
 import FilterPanel from "./components/filterPanel/FilterPanel";
 
 import { useRadio } from "./components/hooks/useRadio";
-
+import { useEffect } from "react";
 import { AdaptiveProvider } from "./components/context/AdaptiveContext";
 
 function App() {
-  const { audioRef, user,stationWiev} = useRadio();
-
+  const { audioRef, user,stationToFavorites,stationView} = useRadio();
+  useEffect(() => {
+    console.log("Оновлення списку улюблених станцій:", stationToFavorites);
+  }, [stationToFavorites]);
   return (
     <>
       {/* {radioStations && radioStations.length > 0 ? ( */}
@@ -24,7 +26,10 @@ function App() {
             <Header />
             <main className="main">
               <div className="test">
-                <StationList key={stationWiev} />
+                <StationList
+                  key={stationToFavorites.length}
+                />
+
                 {/* <AudioVisualize audioRef={audioRef} /> */}
               </div>
               <FilterPanel />

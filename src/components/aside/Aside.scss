@@ -10,6 +10,7 @@
   max-width: 250px;
   transition: left 0.5s;
   position: relative;
+	overflow: hidden;
   ;
   @media (max-width: $mobile) {
     position: absolute;
@@ -32,11 +33,13 @@
     gap: toRem(5);
     margin-bottom: toRem(5);
   }
-
+	
   &__item {
+		
     text-transform: capitalize;
     display: flex;
     align-items: center;
+	
 
     img {
       width: toRem(40);
