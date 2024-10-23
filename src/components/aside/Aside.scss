@@ -1,61 +1,58 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .aside {
-background: $bg-color;
-text-transform: capitalize;
-display: flex;
-padding: toRem(10);
-border: 1px solid rgba(211, 215, 223, 1);
-width: 20%;
-max-width: 250px;
-transition: left 0.5s;
-@media (max-width:$mobile){
-	position: absolute; 
-	z-index: 2;
-	top: toRem(62);
-	left: toRem(-180);
-	min-width: toRem(160);
-  
-	 
-}
-&.active{
-	left: 0;
-}
-		&__title {
-      color: $orange;
-			margin-bottom: toRem(5);
-		}
-
-		&__list {
-			display: flex;
-			flex-direction: column;
-			gap: toRem(5);
-			margin-bottom: toRem(5);
-		
-		}
-
-		&__item {
-			text-transform: capitalize;
-			display: flex;
-			align-items: center;
-			
-			img{
-				width: toRem(40);
-			}
-		}
-}
-
-.logo{
-    margin-bottom: toRem(30);
-	@media (max-width:$mobile){
-		 margin-bottom: toRem(0); 
-		
-	}
-		
-			@media (max-width:$mobile){
-				img{
-					width: 100px;
-				}
-				  
-			}
+  background: $bg-color;
+  text-transform: capitalize;
+  display: flex;
+  padding: toRem(10);
+  border: 1px solid rgba(211, 215, 223, 1);
+  width: 20%;
+  max-width: 250px;
+  transition: left 0.5s;
+  position: relative;
+  ;
+  @media (max-width: $mobile) {
+    position: absolute;
+    z-index: 22;
+    top: toRem(62);
+    left: toRem(-280);
+    min-width: toRem(160);
   }
+  &.active {
+    left: 0;
+  }
+  &__title {
+    color: $orange;
+    margin-bottom: toRem(5);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(5);
+    margin-bottom: toRem(5);
+  }
+
+  &__item {
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: toRem(40);
+    }
+  }
+}
+
+.logo {
+  margin-bottom: toRem(30);
+  @media (max-width: $mobile) {
+    margin-bottom: toRem(0);
+  }
+
+  @media (max-width: $mobile) {
+    img {
+      width: 100px;
+    }
+  }
+}
