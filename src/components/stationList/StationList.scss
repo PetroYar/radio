@@ -5,15 +5,16 @@
   margin: toRem(20);
   justify-content: space-between;
   overflow: auto;
-  flex-grow: 1;
+  // flex-grow: 1;
   gap: toRem(20);
   position: relative;
-  z-index: 5;
+  z-index: 6;
   margin-left: toRem(10);
     scrollbar-width: 5px;
 	@media (max-width:$mobile){
 				 gap: toRem(10); 
          padding-bottom: toRem(90);
+        
 			}
   &__item {
     position: relative;
