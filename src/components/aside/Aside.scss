@@ -18,6 +18,7 @@
     top: toRem(62);
     left: toRem(-280);
     min-width: toRem(160);
+		height: 100vh;
   }
   &.active {
     left: 0;
