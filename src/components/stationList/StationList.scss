@@ -14,7 +14,7 @@
 	@media (max-width:$mobile){
 				 gap: toRem(10); 
          padding-bottom: toRem(90);
-        
+        justify-content: center;
 			}
   &__item {
     position: relative;

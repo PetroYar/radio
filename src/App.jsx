@@ -8,12 +8,11 @@ import Header from "./components/header/Header";
 import FilterPanel from "./components/filterPanel/FilterPanel";
 
 import { useRadio } from "./components/hooks/useRadio";
-import AudioVisualize from "./components/AudioVisualizer";
-import { useRef, useEffect } from "react";
+
 import { AdaptiveProvider } from "./components/context/AdaptiveContext";
 
 function App() {
-  const { audioRef, user } = useRadio();
+  const { audioRef, user,stationWiev} = useRadio();
 
   return (
     <>
@@ -25,7 +24,7 @@ function App() {
             <Header />
             <main className="main">
               <div className="test">
-                <StationList />
+                <StationList key={stationWiev} />
                 {/* <AudioVisualize audioRef={audioRef} /> */}
               </div>
               <FilterPanel />

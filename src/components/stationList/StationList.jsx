@@ -43,7 +43,7 @@ const StationList = (props) => {
       console.log("not user");
     }
   };
-  useEffect(() => {
+  const loadStations = () => {
     const db = database;
 
     // Перевіряємо, чи існує user перед доступом до uid
@@ -52,31 +52,28 @@ const StationList = (props) => {
     }
 
     const dbRef = ref(db, `users/${user.uid}/favoriteStation`);
-
-    const loadStations = () => {
-      // Слухач змін у реальному часі
-      onValue(
-        dbRef,
-        (snapshot) => {
-          if (snapshot.exists()) {
-            const stations = Object.values(snapshot.val());
-            setStationToFavorites(stations);
-          } else {
-            setStationToFavorites([]); // Якщо немає станцій, очищуємо список
-          }
-        },
-        (error) => {
-          console.log(`loadStation ${error}`);
+    // Слухач змін у реальному часі
+    onValue(
+      dbRef,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          const stations = Object.values(snapshot.val());
+          setStationToFavorites(stations);
+        } else {
+          setStationToFavorites([]); // Якщо немає станцій, очищуємо список
         }
-      );
-    };
-
-    loadStations();
-
-    // Очистка слухача при відмонтовані компонента
+      },
+      (error) => {
+        console.log(`loadStation ${error}`);
+      }
+    );
     return () => {
       off(dbRef); // Вимикаємо слухач, щоб уникнути витоків пам'яті
     };
+  };
+  useEffect(() => {
+    loadStations();
+
   }, [user, stationView]);
 
   const checkIfStationExists = async (station) => {
@@ -102,6 +99,7 @@ const StationList = (props) => {
       const dbRef = ref(db, `users/${user.uid}/favoriteStation/${stationKey}`);
       await remove(dbRef);
       console.log("Станцію видалено");
+      loadStations();
     } catch (error) {
       console.error("Помилка видалення станції:", error);
     }
@@ -122,13 +120,9 @@ const StationList = (props) => {
                 className="station-list__item-button"
               >
                 {el.favicon ? (
-                  <img
-                    
-                    src={el.favicon}
-                    alt={el.name}
-                  />
+                  <img src={el.favicon} alt={el.name} />
                 ) : (
-                  <img  src={radioIcon} alt="radio" />
+                  <img src={radioIcon} alt="radio" />
                 )}
                 <p>
                   {el.name
