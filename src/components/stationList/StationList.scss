@@ -21,7 +21,7 @@
     transition: color 0.7s;
     width: 150px;
    
-    @include adaptiveValue("width",150 ,120 );
+    @include adaptiveValue("width",150 ,110 );
     height: toRem(100);
     overflow: hidden;
     text-align: center;
