@@ -7,6 +7,9 @@
   align-items: center;
   border: 1px solid rgba(211, 215, 223, 1);
 
+  @media (max-width:$mobile){
+      flex-direction: column;
+  }
   padding: toRem(10) toRem(5);
   &__input {
     border: 1px solid rgba(211, 215, 223, 1);
@@ -14,9 +17,17 @@
     display: flex;
     align-items: center;
     width: 100%;
+   
     input {
       width: 100%;
     }
+  }
+  &__category{
+    display: flex;
+   gap: toRem(20);
+   position: absolute;
+   right: toRem(5);
+   top: toRem(20);
   }
 }
 
@@ -49,6 +60,7 @@ flex-direction: column;
        margin-left: 0; 
        width: max-content;
        margin-bottom: toRem(10);
+       
     }
   }
 }
@@ -56,6 +68,8 @@ flex-direction: column;
 .burger {
   position: relative;
   padding: toRem(20) toRem(20);
+  position: absolute;
+  left: toRem(5);
   // background: #00F44D;
   @media (min-width:$mobile){
       display: none;

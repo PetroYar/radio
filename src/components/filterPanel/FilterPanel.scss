@@ -9,9 +9,7 @@ padding: toRem(10);
   max-width: 350px;
   
   min-width: 10%;
-  @media (max-width:$mobile){
-     display: none; 
-  }
+
 &__list{
   display: flex;
   flex-direction: column;
@@ -20,6 +18,7 @@ padding: toRem(10);
   overflow: hidden;
   overflow-y: auto;
   margin-bottom: toRem(20);
+ 
 }
 &__item{
   display: flex;

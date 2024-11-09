@@ -11,11 +11,13 @@
   transition: left 0.5s;
   position: relative;
 	overflow: hidden;
+    min-width: toRem(160);
+
   ;
   @media (max-width: $mobile) {
     position: absolute;
     z-index: 22;
-    top: toRem(62);
+    top: toRem(54);
     left: toRem(-280);
     min-width: toRem(160);
 		height: 100vh;
@@ -52,6 +54,7 @@
   margin-bottom: toRem(30);
   @media (max-width: $mobile) {
     margin-bottom: toRem(0);
+  
   }
 
   @media (max-width: $mobile) {
