@@ -13,7 +13,7 @@
       "type": "image/svg+xml"
     },
     {
-      "src": "src/components/icon/logo.svg",
+      "src": "./src/components/icon/logo.svg",
       "sizes": "512x512",
       "type": "image/svg+xml"
     }
