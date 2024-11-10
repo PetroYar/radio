@@ -3,7 +3,7 @@ const urlsToCache = [
   "/",
   "/index.html",
   "/src/main.jsx",
-  "/src/components/icon/logo.svg", // додайте інші файли, які хочете кешувати
+  "/components/icon/logo.svg", // додайте інші файли, які хочете кешувати
   // додайте інші необхідні ресурси
 ];
 
@@ -17,7 +17,7 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  // Перехоплюємо запити та надаємо кешовані дані, якщо мережа недоступна
+  
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
