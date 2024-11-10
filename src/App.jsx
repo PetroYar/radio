@@ -18,10 +18,10 @@ function App() {
   useEffect(() => {
     console.log("Оновлення списку улюблених станцій:", stationToFavorites);
   }, [stationToFavorites]);
+
   return (
     <>
       {/* {radioStations && radioStations.length > 0 ? ( */}
-      <AdaptiveProvider>
         <div className="app">
           <Aside />
           <div className="content">
@@ -38,7 +38,6 @@ function App() {
             <Player />
           </div>
         </div>
-      </AdaptiveProvider>
       {/* ) : (
         <p>ds</p>
       )} */}

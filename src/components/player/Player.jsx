@@ -47,6 +47,7 @@ const Player = (props) => {
   const handleVolumeChange = (event) => {
     const volume = event.target.value / 100;
     audioRef.current.volume = volume;
+    
   };
   const play = () => {
     audioRef.current.play();

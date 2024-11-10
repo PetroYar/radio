@@ -11,13 +11,21 @@ import { useAdaptive } from "../hooks/useAdaptive";
 import { popularGenres, popularMusicCountries } from "../config/constans";
 
 const Header = (props) => {
-  const { language, setLanguage } = useRadio(); // Початкова мова — англійська
-  const { user, signInWithGoogle, signOut,handleLanguageChange } = useAuth();
+  const {
+    language,
+    setLanguage,
+    inputHandleChange,
+    inputValue,
+    setFilteredGenre,
+    setFilteredCountry,
+  } = useRadio(); // Початкова мова — англійська
+  const { user, signInWithGoogle, signOut,handleLanguageChange, } = useAuth();
   const { handleBurgerMenu, showBurgerMenu, isMobile } = useAdaptive();
+
 const handleClick = ()=>{
   console.log(33)
 }
- 
+
   return (
     <header className="header">
       <button
@@ -32,7 +40,7 @@ const handleClick = ()=>{
             <img src={logo} alt="logo world radio" />
           </div>
           <div className="header__category">
-            <select name="" id="">
+            <select name="" id="" onChange={(e)=>setFilteredGenre(e.target.value)}>
               {popularGenres.map((el, index) => {
                 return (
                   <option key={index} value={el}>
@@ -41,7 +49,7 @@ const handleClick = ()=>{
                 );
               })}
             </select>
-            <select name="" id="">
+            <select name="" id="" onChange={(e)=>setFilteredCountry(e.target.value)}>
               {popularMusicCountries.map((el, index) => {
                 return (
                   <option key={index} value={el}>
@@ -55,7 +63,12 @@ const handleClick = ()=>{
       )}
       <div className="header__input">
         <img src={search} alt="search" />
-        <input type="text" onClick={handleClick} />
+        <input
+          type="text"
+          onClick={handleClick}
+          onChange={inputHandleChange}
+          value={inputValue}
+        />
       </div>
       {isMobile && (
         <>

@@ -11,12 +11,12 @@ const RadioProvider = ({ children }) => {
   const [stationToFavorites, setStationToFavorites] = useState([]);
   const [language, setLanguage] = useState("en");
   const audioRef = useRef();
-  const [test, setTest] = useState("");
-  const [test1, setTest1] = useState("");
+  const [filteredGenre, setFilteredGenre] = useState("");
+  const [filteredCountry, setFilteredCountry] = useState("");
   const [historyStation, setHistoryStation] = useState([]);
   const [stationView, setStationView] = useState([]);
   const [massage, setMassage] = useState("");
-
+  const [inputValue, setInputValue] = useState("");
   useEffect(() => {
     if (stationView === historyStation) {
       setMassage(messagesError[language].noStations);
@@ -24,16 +24,19 @@ const RadioProvider = ({ children }) => {
       setMassage(messagesError[language].loginFirst);
     } else {
       setMassage(messagesError[language].loading);
-      
     }
-  }, [stationView,language]);
+  }, [stationView, language]);
   useEffect(() => {
     setStationView(radioStations);
   }, [radioStations]);
   useEffect(() => {
     const fetchStations = async () => {
       try {
-        const stations = await fetchRadioStations(test1, test, "trtr");
+        const stations = await fetchRadioStations(
+          filteredCountry,
+          filteredGenre,
+          ""
+        );
         const filteredStations = stations.filter((station) => {
           const isSupportedCodec = station.codec.toLowerCase() === "mp3";
           return isSupportedCodec;
@@ -46,8 +49,8 @@ const RadioProvider = ({ children }) => {
     };
 
     fetchStations();
-  }, [test, test1]);
-  
+  }, [filteredGenre, filteredCountry]);
+
   const switchStationView = (stations) => {
     setStationIndex(0);
     if (stations === "favorite") {
@@ -57,7 +60,6 @@ const RadioProvider = ({ children }) => {
     } else {
       setStationView(historyStation);
     }
-   
   };
   const addHistory = () => {
     const stationExists = historyStation.some(
@@ -68,9 +70,21 @@ const RadioProvider = ({ children }) => {
       setHistoryStation((stations) => [...stations, stationView[stationIndex]]);
     }
   };
- const handleLanguageChange = (event) => {
-   setLanguage(event.target.value); // Оновлюємо стан на основі обраного значення
- };
+  const handleLanguageChange = (event) => {
+    setLanguage(event.target.value); // Оновлюємо стан на основі обраного значення
+  };
+
+  const inputHandleChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    const filtered = radioStations.filter((station) =>
+      station.name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setStationView(filtered);
+  };
+ 
   const valueCTX = {
     radioStations,
     stationIndex,
@@ -80,17 +94,21 @@ const RadioProvider = ({ children }) => {
     language,
     setLanguage,
     audioRef,
-    setTest,
-    setTest1,
-    test,
-    test1,
+    setFilteredGenre,
+    
+    filteredGenre,
+  
     switchStationView,
     stationView,
     historyStation,
     setHistoryStation,
     massage,
     addHistory,
-    handleLanguageChange
+    handleLanguageChange,
+    inputHandleChange,
+    inputValue,
+    filteredCountry,
+    setFilteredCountry,
   };
   return (
     <RadioContext.Provider value={valueCTX}>{children}</RadioContext.Provider>

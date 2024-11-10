@@ -6,12 +6,14 @@ import { useRadio } from "../hooks/useRadio";
 import { useAdaptive } from "../hooks/useAdaptive";
 import useAuth from "../hooks/useAuth";
 import globe from "../icon/Globe.svg";
-
+import { useEffect } from "react";
 const Aside = (props) => {
   const { language, switchStationView,handleLanguageChange } = useRadio();
   const { isMobile, showBurgerMenu, handleBurgerMenu } = useAdaptive();
   const { user, signInWithGoogle, signOut } = useAuth();
-
+useEffect(() => {
+  console.log(isMobile);
+}, [isMobile]);
   const handleButtonClick = (index, ind) => {
     handleBurgerMenu()
     switch (ind) {

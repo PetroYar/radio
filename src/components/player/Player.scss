@@ -77,7 +77,8 @@
     width: toRem(150);
     align-items: center;
     @media (max-width:$mobile){
-       display: none; 
+      display: none;
+      
     }
     input {
       -webkit-appearance: none;
@@ -85,12 +86,14 @@
       transform: translateX(-2px);
       height: 2px;
       background: $balck;
+     
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
         background: black;
         width: toRem(10);
         height: toRem(10);
         border-radius: 50%;
+
       }
     }
   }

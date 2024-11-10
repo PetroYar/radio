@@ -5,16 +5,17 @@ import { popularGenres, popularMusicCountries } from "../config/constans";
 import { useRadio } from "../hooks/useRadio";
 
 const FilterPanel = (props) => {
-  const { setTest, setTest1,test,test1 } = useRadio();
+  const { setFilteredGenre, setFilteredCountry, filteredGenre,  } =
+    useRadio();
 
   const testt = (tag) =>{
-    setTest(tag)
-    setTest1('')
+    setFilteredGenre(tag);
+    setFilteredCountry("");
   };
   const testt1 = (country) => {
     
-   setTest1(country)
-    setTest('')    
+   setFilteredCountry(country);
+    setFilteredGenre('')    
     
    };
 
@@ -23,7 +24,12 @@ const FilterPanel = (props) => {
       <ul className="filter-panel__list">
         {popularGenres.map((el) => {
           return (
-            <li key={el} className={`filter-panel__item ${el == test? 'bott': ''}`}>
+            <li
+              key={el}
+              className={`filter-panel__item ${
+                el == filteredGenre ? "bott" : ""
+              }`}
+            >
               <button onClick={() => testt(el)}>{el}</button>
             </li>
           );
