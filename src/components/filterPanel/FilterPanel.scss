@@ -9,22 +9,24 @@ padding: toRem(10);
   max-width: 350px;
   
   min-width: 10%;
-
-&__list{
-  display: flex;
-  flex-direction: column;
-  gap: toRem(5);
-  max-height: 47%;
-  overflow: hidden;
-  overflow-y: auto;
-  margin-bottom: toRem(20);
- 
-}
-&__item{
+  
+  &__list{
+    display: flex;
+    flex-direction: column;
+    gap: toRem(5);
+    max-height: 47%;
+    overflow: hidden;
+    overflow-y: auto;
+    margin-bottom: toRem(20);
+    align-items: center;
+    
+  }
+  &__item{
+  text-align: center;
   display: flex;
   transition: all 1s;
 }
 }
 .bott{
-color: red;
+color: $orange;
 }
