@@ -19,9 +19,8 @@ const Player = (props) => {
     stationView,
     historyStation,
     addHistory,
-    
   } = useRadio();
-  const {isMobile,} = useAdaptive()
+  const { isMobile } = useAdaptive();
   const [currentTime, setCurrentTime] = useState(0);
   const [playbackStatus, setPlaybackStatus] = useState(false);
 
@@ -46,20 +45,13 @@ const Player = (props) => {
       setStationIndex(stationView.length - 1);
     }
   };
-   if (!isMobile) {
-   audioRef.current.volume = 1;
-   
-   
-   }
+
   const handleVolumeChange = (event) => {
-   let volume = event.target.value / 100;
+    let volume = event.target.value / 100;
 
-   
-
-   audioRef.current.volume = volume;
-    
+    audioRef.current.volume = volume;
   };
-  
+
   const play = () => {
     audioRef.current.play();
     setPlaybackStatus(true);
@@ -81,7 +73,6 @@ const Player = (props) => {
     <div className="player">
       {stationView && stationView.length > 0 ? (
         <>
-        
           <div className="player__buttons">
             <button onClick={playRandomStation} className="player__random">
               <img src={random} alt="icon stir" />
@@ -118,16 +109,15 @@ const Player = (props) => {
           </div>
 
           <span className="time">{formatTime(currentTime)}</span>
-         
-            <p className="player__station-name">
-              {stationView[stationIndex].name
-                .replace(
-                  / - \d+kb\/s|\s+\d+(\.\d+)?FM|\s+\(\d+\s+kбіт\/с\)|\s+\d+\.\d+/g,
-                  ""
-                )
-                .trim()}
-            </p>
-          
+
+          <p className="player__station-name">
+            {stationView[stationIndex].name
+              .replace(
+                / - \d+kb\/s|\s+\d+(\.\d+)?FM|\s+\(\d+\s+kбіт\/с\)|\s+\d+\.\d+/g,
+                ""
+              )
+              .trim()}
+          </p>
 
           <div className="player__volume-slider">
             <img src={iconVolume} alt="volume" />
