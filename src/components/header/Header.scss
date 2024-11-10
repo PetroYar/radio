@@ -34,6 +34,8 @@
 .launge {
   display: flex;
   align-items: center;
+  gap: toRem(10);
+  align-items: center;
 }
 .auth {
   display: flex;
@@ -126,4 +128,24 @@ span {
 
       }
     }  }
+}
+select {
+  background: $bg-color;
+  color: $orange; // Колір тексту за замовчуванням для селекту
+  padding: toRem(3);
+  border:1px solid $orange;
+  
+}
+
+option {
+  background: $bg-color; // Колір фону для опцій
+}
+
+select:focus {
+  color: 'red'; // Колір для тексту вибраного елемента при фокусі
+}
+
+option:selected {
+  background: 'blue'; // Колір фону для вибраної опції
+  color: 'limegreen'; // Колір тексту для вибраної опції
 }
