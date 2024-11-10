@@ -74,19 +74,16 @@ const RadioProvider = ({ children }) => {
     setLanguage(event.target.value); // Оновлюємо стан на основі обраного значення
   };
 
-const inputHandleChange = (e) => {
-  const value = e.target.value;
-  setInputValue(value);
+  const inputHandleChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
 
-  clearTimeout(timeoutId);
-
-  timeoutId = setTimeout(() => {
     const filtered = radioStations.filter((station) =>
       station.name.toLowerCase().includes(value.toLowerCase())
     );
+
     setStationView(filtered);
-  }, 3000);
-};
+  };
 
   const valueCTX = {
     radioStations,
