@@ -12,7 +12,7 @@ export const translationsAside = {
       menu: "Menu",
       history: "History",
       share: "Share",
-      general: "General",
+      // general: "General",
     },
     menu: [{ name: "home", icon: home }],
     history: [
@@ -20,11 +20,11 @@ export const translationsAside = {
       { name: "favorite", icon: favourite },
     ],
     share: [
-      { name: "instagram", icon: instagram },
+      // { name: "instagram", icon: instagram },
       { name: "facebook", icon: facebook },
     ],
     general: [
-      { name: "setting", icon: setting },
+      // { name: "setting", icon: setting },
       // { name: "log in", icon:'dfdf' },
     ],
   },
@@ -41,7 +41,7 @@ export const translationsAside = {
       { name: "вибрані", icon: favourite },
     ],
     share: [
-      { name: "instagram", icon: instagram },
+      // { name: "instagram", icon: instagram },
       { name: "facebook", icon: facebook },
     ],
     general: [
@@ -62,7 +62,7 @@ export const translationsAside = {
       { name: "ulubione", icon: favourite },
     ],
     share: [
-      { name: "instagram", icon: instagram },
+      // { name: "instagram", icon: instagram },
       { name: "facebook", icon: facebook },
     ],
     general: [
@@ -75,14 +75,20 @@ export const translationsHeader = {
   en: {
     login: "Login",
     logout: "Logout",
+    genre: "Genre",
+    country: "Country",
   },
   pl: {
     login: "Zaloguj się",
     logout: "Wyloguj się",
+    genre: "Gatunek",
+    country: "Kraj",
   },
   ua: {
     login: "Увійти",
     logout: "Вийти",
+    genre: "Жанр",
+    country: "Країна",
   },
 };
 export const messagesError = {
@@ -102,3 +108,4 @@ export const messagesError = {
     loading: "почекайте будь-ласка",
   },
 };
+

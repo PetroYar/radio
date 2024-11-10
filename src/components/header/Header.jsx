@@ -18,7 +18,9 @@ const Header = (props) => {
     inputValue,
     setFilteredGenre,
     setFilteredCountry,
-  } = useRadio(); // Початкова мова — англійська
+    filteredGenre,
+    filteredCountry,
+  } = useRadio(); 
   const { user, signInWithGoogle, signOut,handleLanguageChange, } = useAuth();
   const { handleBurgerMenu, showBurgerMenu, isMobile } = useAdaptive();
 
@@ -40,7 +42,13 @@ const handleClick = ()=>{
             <img src={logo} alt="logo world radio" />
           </div>
           <div className="header__category">
-            <select name="" id="" onChange={(e)=>setFilteredGenre(e.target.value)}>
+            <select
+              name=""
+              id=""
+              value={filteredGenre}
+              onChange={(e) => setFilteredGenre(e.target.value)}
+            >
+              <option> {translationsHeader[language].genre}</option>
               {popularGenres.map((el, index) => {
                 return (
                   <option key={index} value={el}>
@@ -49,7 +57,14 @@ const handleClick = ()=>{
                 );
               })}
             </select>
-            <select name="" id="" onChange={(e)=>setFilteredCountry(e.target.value)}>
+            <select
+              name=""
+              id=""
+              value={filteredCountry}
+              onChange={(e) => setFilteredCountry(e.target.value)}
+            >
+              <option>{translationsHeader[language].country}</option>
+
               {popularMusicCountries.map((el, index) => {
                 return (
                   <option key={index} value={el}>

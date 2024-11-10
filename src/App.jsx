@@ -8,17 +8,13 @@ import Header from "./components/header/Header";
 import FilterPanel from "./components/filterPanel/FilterPanel";
 
 import { useRadio } from "./components/hooks/useRadio";
-import { useEffect } from "react";
-import { AdaptiveProvider } from "./components/context/AdaptiveContext";
+
 import { useAdaptive } from "./components/hooks/useAdaptive";
 
 function App() {
-  const { audioRef, user, stationToFavorites, stationView } = useRadio();
+  const { stationToFavorites } = useRadio();
   const { isMobile } = useAdaptive();
-  useEffect(() => {
-    console.log("Оновлення списку улюблених станцій:", stationToFavorites);
-  }, [stationToFavorites]);
-
+ 
   return (
     <>
       {/* {radioStations && radioStations.length > 0 ? ( */}
