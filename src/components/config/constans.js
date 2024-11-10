@@ -7,7 +7,6 @@ export const popularGenres = [
   "country",
   "jazz",
   "classical",
-  "R&B",
   "blues",
   "metal",
   "funk",

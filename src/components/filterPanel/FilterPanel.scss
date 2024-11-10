@@ -19,12 +19,16 @@ padding: toRem(10);
     overflow-y: auto;
     margin-bottom: toRem(20);
     align-items: center;
-    
   }
   &__item{
-  text-align: center;
-  display: flex;
-  transition: all 1s;
+    text-align: center;
+    display: flex;
+    transition: all 1s;
+    button{
+      
+      text-transform: capitalize;
+    }
+    // @include adaptiveValue("font-size",18 ,18);
 }
 }
 .bott{
