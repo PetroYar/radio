@@ -7,6 +7,7 @@ import { useAdaptive } from "../hooks/useAdaptive";
 import useAuth from "../hooks/useAuth";
 import globe from "../icon/Globe.svg";
 import { useEffect } from "react";
+import InstallButton from "../IntallButton";
 const Aside = (props) => {
   const { language, switchStationView, handleLanguageChange } = useRadio();
   const { isMobile, showBurgerMenu, handleBurgerMenu } = useAdaptive();
@@ -29,14 +30,14 @@ const Aside = (props) => {
         break;
       case 2: // 'share'
         if (index === 0) {
-         const urlToShare = "https://radio-qcxu.vercel.app/"; // Поточне посилання на сторінку
+          const urlToShare = "https://radio-qcxu.vercel.app/"; // Поточне посилання на сторінку
           const quoteText = "!"; // Текст, який буде додано до допису
-          
+
           const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
             urlToShare
           )}&quote=${encodeURIComponent(quoteText)}`;
           window.open(facebookUrl, "_blank");
-        } 
+        }
         break;
       case 3: // 'general'
         if (index === 0) {
@@ -112,6 +113,7 @@ const Aside = (props) => {
             </div>
           </>
         )}
+        <InstallButton />
       </div>
     </aside>
   );
