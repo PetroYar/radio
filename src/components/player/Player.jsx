@@ -9,6 +9,7 @@ import iconStop from "../icon/stop.svg";
 import random from "../icon/random.svg";
 import iconVolume from "../icon/volume.svg";
 import radioIcon from "../icon/radioIcon.png";
+import { useAdaptive } from "../hooks/useAdaptive";
 
 const Player = (props) => {
   const {
@@ -18,8 +19,9 @@ const Player = (props) => {
     stationView,
     historyStation,
     addHistory,
-    isMobile,
+    
   } = useRadio();
+  const {isMobile,} = useAdaptive()
   const [currentTime, setCurrentTime] = useState(0);
   const [playbackStatus, setPlaybackStatus] = useState(false);
 
@@ -44,11 +46,20 @@ const Player = (props) => {
       setStationIndex(stationView.length - 1);
     }
   };
+   if (!isMobile) {
+   audioRef.current.volume = 1;
+   
+   
+   }
   const handleVolumeChange = (event) => {
-    const volume = event.target.value / 100;
-    audioRef.current.volume = volume;
+   let volume = event.target.value / 100;
+
+   
+
+   audioRef.current.volume = volume;
     
   };
+  
   const play = () => {
     audioRef.current.play();
     setPlaybackStatus(true);
