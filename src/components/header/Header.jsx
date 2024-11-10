@@ -19,9 +19,9 @@ const Header = (props) => {
     setFilteredGenre,
     setFilteredCountry,
     filteredGenre,
-    filteredCountry,
+    filteredCountry,handleLanguageChange,
   } = useRadio(); 
-  const { user, signInWithGoogle, signOut,handleLanguageChange, } = useAuth();
+  const { user, signInWithGoogle, signOut, } = useAuth();
   const { handleBurgerMenu, showBurgerMenu, isMobile } = useAdaptive();
 
 const handleClick = ()=>{

@@ -1,9 +1,8 @@
 import { createContext, useEffect, useState, useRef } from "react";
 
 import { fetchRadioStations } from "../utils/api";
-import { app } from "../firebase";
+
 const RadioContext = createContext();
-import { getAuth } from "firebase/auth";
 import { messagesError } from "../config/translations";
 const RadioProvider = ({ children }) => {
   const [radioStations, setRadioStations] = useState([]);
@@ -71,7 +70,8 @@ const RadioProvider = ({ children }) => {
     }
   };
   const handleLanguageChange = (event) => {
-    setLanguage(event.target.value); // Оновлюємо стан на основі обраного значення
+    setLanguage(event.target.value); 
+    console.log(33)
   };
 
   const inputHandleChange = (e) => {
