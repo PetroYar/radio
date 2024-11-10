@@ -84,7 +84,7 @@ const RadioProvider = ({ children }) => {
 
     setStationView(filtered);
   };
- 
+
   const valueCTX = {
     radioStations,
     stationIndex,
@@ -95,9 +95,9 @@ const RadioProvider = ({ children }) => {
     setLanguage,
     audioRef,
     setFilteredGenre,
-    
+
     filteredGenre,
-  
+
     switchStationView,
     stationView,
     historyStation,
